@@ -1,15 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&family=Dancing+Script:wght@400..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Yellowtail&display=swap');
 @import "tailwindcss";
-@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-
-@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
-
 /* Usage */
 body {
   font-family: "Lato", sans-serif;
-}
-
-h1, h2, h3, h4, h5, h6 {
-  font-family: "Playfair Display", serif;
 }
 
 
@@ -21,4 +15,22 @@ h1, h2, h3, h4, h5, h6 {
   --color-deep-brown: #955749;
   --color-off-white: #FAF8F6;
   --color-app-black: #3A3331;
+
+  --font-lato: 'Lato', sans-serif;
+  --font-playfair: 'Playfair Display', serif;
+  --font-dancing: 'Dancing Script', cursive;
 }
+
+.button-rust {
+  color: var(--color-off-white);
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-family: var(--font-lato);
+  font-weight: 700;
+  transition: background-color 0.3s ease;
+  text-decoration: underline var(--color-rust) 2px;
+}
+.button-rust:hover {
+  background-color: var(--color-rust)/80;
+}
+

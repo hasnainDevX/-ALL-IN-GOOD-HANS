@@ -1,0 +1,33 @@
+// Primary Colors
+Cream Beige: #ECDAC8
+- Use for: Main backgrounds, light sections, card backgrounds
+
+Soft Peach: #D1A693  
+- Use for: Secondary backgrounds, hover states, subtle accents
+
+Terracotta: #D8966F
+- Use for: Medium accents, borders, decorative elements
+
+Rust: #BF5B3C
+- Use for: Primary CTAs, headings, important text
+
+Deep Brown: #955749
+- Use for: Text, icons, footer, strong emphasis
+
+// Color Hierarchy
+Background: #ECDAC8 (Cream Beige)
+Headings: #BF5B3C (Rust) or #955749 (Deep Brown)
+Body Text: #955749 (Deep Brown) or slightly darker
+Accents: #D8966F (Terracotta)
+Hover/Interactive: #D1A693 (Soft Peach)
+CTAs: #BF5B3C (Rust) with #955749 (Deep Brown) on hover
+
+// Accessibility Notes
+- Deep Brown (#955749) on Cream Beige (#ECDAC8) = Good contrast for body text
+- Rust (#BF5B3C) on Cream Beige = Strong contrast for headings
+- Ensure CTA buttons have sufficient contrast
+
+// Complementary Neutrals (if needed)
+Off-White: #FAF8F6 (for pure white alternatives)
+Warm Gray: #8B7D77 (for muted text)
+Dark Charcoal: #3A3331 (for high contrast text if needed)

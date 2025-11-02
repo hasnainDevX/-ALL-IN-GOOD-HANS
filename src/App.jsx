@@ -1,12 +1,15 @@
 import React from 'react'
+import Navbar from './components/Navbar'
+import Hero from './components/Hero'
 
 function App() {
 
   return (
     <>
-      <p className="">
-        Hello world
-      </p>
+      <div className="app-container">
+        <Navbar />
+        <Hero />
+      </div>
     </>
   )
 }
