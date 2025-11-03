@@ -62,19 +62,19 @@ const Navbar = () => {
             <div className="icon1">
               <Instagram
                 className="text-rust cursor-pointer"
-                size={30}
+                size={25}
               />
             </div>
             <div className="icon2">
               <Linkedin
                 className="text-rust cursor-pointer"
-                size={30}
+                size={25}
               />
             </div>
             <div className="icon3">
               <Mail
                 className="text-rust  cursor-pointer"
-                size={30}
+                size={25}
               />
             </div>
             </div>
