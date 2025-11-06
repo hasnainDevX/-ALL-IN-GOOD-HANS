@@ -3,9 +3,30 @@
 @import "tailwindcss";
 /* Usage */
 body {
-  font-family: "Lato", sans-serif;
+  opacity: 1 !important;
+  overflow-x: hidden !important;
+  /* max-width: 100vw; */
 }
 
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background-color: var(--color-cream-beige);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-rust);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-terracotta);
+}
+
+html {
+  scroll-behavior: smooth;
+}
 
 @theme {
   --color-cream-beige: #ECDAC8;
@@ -19,18 +40,5 @@ body {
   --font-lato: 'Lato', sans-serif;
   --font-playfair: 'Playfair Display', serif;
   --font-dancing: 'Dancing Script', cursive;
-}
-
-.button-rust {
-  color: var(--color-off-white);
-  padding: 0.75rem 1.5rem;
-  border-radius: 0.5rem;
-  font-family: var(--font-lato);
-  font-weight: 700;
-  transition: background-color 0.3s ease;
-  text-decoration: underline var(--color-rust) 2px;
-}
-.button-rust:hover {
-  background-color: var(--color-rust)/80;
 }
 
