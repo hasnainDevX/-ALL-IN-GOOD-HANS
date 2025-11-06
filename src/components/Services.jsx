@@ -61,7 +61,7 @@ const Services = () => {
   ];
 
   return (
-    <section className="relative bg-rust py-24 px-6 md:py-32 lg:py-40 overflow-hidden">
+    <section className="relative bg-[#4A2828] py-24 px-6 md:py-32 lg:py-40 overflow-hidden">
       {/* Decorative Elements */}
       <div className="absolute top-20 right-10 opacity-5">
         <Sparkles className="w-32 h-32 text-yellow-200" />
