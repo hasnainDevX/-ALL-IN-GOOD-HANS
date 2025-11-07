@@ -1,39 +1,52 @@
 import React from "react";
+import coffee from "../assets/coffee.png";
+import flower from "../assets/flower.png";
+
 const Pricing = () => {
   const packages = [
-  {
-    name: "Ad Hoc Support",
-    hours: "£30 per hour",
-    points: [
-      "Ideal for one-off tasks or testing our service",
-      "Minimum 2 hours billed to the nearest 15 minutes",
-      "New clients receive a £60 upfront deposit option"
-    ],
-    cta: "Enquire"
-  },
-  {
-    name: "A Happy Medium",
-    hours: "10 hours per week",
-    points: [
-      "Our most popular package for regular support",
-      "Perfect for managing a high volume of tasks",
-      "Valuable extension to your business operations"
-    ],
-    cta: "Enquire"
-  },
-  {
-    name: "The Life Changer",
-    hours: "20 hours per week",
-    points: [
-      "Perfect package for those with busy schedules",
-      "Heavily involved support across your business",
-      "Gives you time to focus on what you do best"
-    ],
-    cta: "Enquire"
-  }
-];
+    {
+      name: "Ad Hoc Support",
+      hours: "£30 per hour",
+      points: [
+        "Ideal for one-off tasks or testing our service",
+        "Minimum 2 hours billed to the nearest 15 minutes",
+        "New clients receive a £60 upfront deposit option",
+      ],
+      cta: "Enquire",
+    },
+    {
+      name: "A Happy Medium",
+      hours: "10 hours per week",
+      points: [
+        "Our most popular package for regular support",
+        "Perfect for managing a high volume of tasks",
+        "Valuable extension to your business operations",
+      ],
+      cta: "Enquire",
+    },
+    {
+      name: "The Life Changer",
+      hours: "20 hours per week",
+      points: [
+        "Perfect package for those with busy schedules",
+        "Heavily involved support across your business",
+        "Gives you time to focus on what you do best",
+      ],
+      cta: "Enquire",
+    },
+  ];
   return (
-    <div className="py-16 lg:py-28">
+    <div className="py-16 lg:py-28 relative">
+      <img
+        className=" absolute w-20 h-20 md:w-32 md:h-32 left-[5%] md:top-[5%] top-[2%] -rotate-12 z-1"
+        src={coffee}
+        alt="coffee Image"
+      />
+      <img
+        className=" absolute w-20 h-20 md:w-32 md:h-32 right-[5%] md:top-[5%] top-[2%] -rotate-12 z-1"
+        src={flower}
+        alt="flower Image"
+      />
       <div className="textpart max-w-4xl mx-auto space-y-8 px-5 mb-16 lg:mb-24">
         <h2
           className="text-5xl sm:text-6xl lg:text-7xl text-rust leading-tight text-center"
@@ -62,10 +75,10 @@ const Pricing = () => {
           {packages.map((pkg, index) => (
             <div
               key={index}
-              className="bg-yellow-200  px-12 py-16 flex flex-col items-center text-center relative md:mb-0 mb-4"
+              className="bg-yellow-200 px-12 py-16 flex flex-col items-center text-center relative md:mb-0 mb-4"
             >
               {/* Number Badge */}
-              <div className="absolute -top-8 w-20 h-20 rounded-full bg-rust flex items-center justify-center font-bold text-2xl  mb-6 border-4 border-rust text-white">
+              <div className="absolute -top-8 w-20 h-20 rounded-full bg-white flex items-center justify-center font-bold text-2xl  mb-6  -rust text-deep-brown shadow-lg font-lato">
                 {index + 1}
               </div>
 

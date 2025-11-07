@@ -68,7 +68,7 @@ const About = () => {
         </div>
         <h2
           ref={(el) => (cardRefs.current[0] = el)}
-          className="text-3xl md:text-4xl font-light text-amber-950 mb-2 transition-all duration-700"
+          className="text-4xl md:text-5xl font-light text-amber-950 mb-2 transition-all duration-700"
           style={{ fontFamily: "Playfair Display, serif" }}
         >
           TIME TO CHANGE
@@ -76,7 +76,7 @@ const About = () => {
         <div className="w-16 h-px bg-amber-400 mx-auto my-4"></div>
         <p
           ref={(el) => (cardRefs.current[1] = el)}
-          className="text-gray-600 text-sm md:text-base max-w-3xl mx-auto leading-relaxed transition-all duration-700"
+          className="text-gray-600 text-sm md:text-base max-w-3xl mx-auto leading-relaxed transition-all duration-700 px-2"
         >
           Originally from Newcastle and now based in York, I support small
           business owners across the UK to create calm, structure, and clarity
@@ -93,7 +93,7 @@ const About = () => {
       <Shapes />
 
          <button
-            className="group bg-rust text-white px-4 sm:px-6 py-3.5 sm:py-3.5 rounded-full text-xs uppercase tracking-[0.15em] hover:bg-[#ac5135] transition-all duration-300  hover:shadow-xl border border-rust/20 2xl:px-16 2xl:py-8 2xl:text-2xl cursor-pointer my-3 mt-12 mx-auto block"
+            className="group bg-rust text-white px-4 sm:px-6 py-3.5 sm:py-3.5  rounded-full text-xs uppercase tracking-[0.15em] hover:bg-[#ac5135] transition-all duration-300  hover:shadow-xl border border-rust/20 2xl:px-16 2xl:py-8 2xl:text-2xl cursor-pointer my-3 mt-12 mx-auto block"
             style={{ fontFamily: '"Inter", sans-serif' }}
           >
             Tell me Everything

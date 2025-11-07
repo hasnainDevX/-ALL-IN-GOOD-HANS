@@ -45,12 +45,12 @@ const ShapeCards = () => {
               </div>
               <p className="text-xs font-light tracking-widest text-amber-500 mb-3 uppercase">& Offer</p>
               <h3 
-                className="text-center text-lg md:text-xl font-semibold text-amber-950 mb-4 leading-relaxed"
+                className="text-center text-xl md:text-2xl font-semibold text-amber-950 mb-4 leading-relaxed"
                 style={{ fontFamily: 'Playfair Display, serif', letterSpacing: '0.05em' }}
               >
                 {card.title}
               </h3>
-              <p className="text-center text-sm md:text-base font-light text-gray-600 leading-relaxed max-w-xs">
+              <p className="text-center md:text- font-light text-gray-600 leading-relaxed max-w-xs">
                 {card.text}
               </p>
             </div>

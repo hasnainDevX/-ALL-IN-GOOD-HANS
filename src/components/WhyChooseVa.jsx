@@ -55,7 +55,7 @@ const WhyChooseVa = () => {
             ))}
             <Link to="services" smooth={true} duration={500} offset={-70}>
             <button
-              className="group bg-rust text-white px-4 sm:px-6 py-2 sm:py-3.5 rounded-full text-xs uppercase tracking-[0.15em] hover:bg-[#ac5135] transition-all duration-300  hover:shadow-xl border border-rust/20 2xl:px-16 2xl:py-8 2xl:text-2xl cursor-pointer mt-6"
+              className="group bg-rust text-white px-4 sm:px-6 py-3.5 sm:py-3.5  rounded-full text-xs uppercase tracking-[0.15em] hover:bg-[#ac5135] transition-all duration-300  hover:shadow-xl border border-rust/20 2xl:px-16 2xl:py-8 2xl:text-2xl cursor-pointer mt-6"
               style={{ fontFamily: '"Inter", sans-serif' }}
             >
               Explore my Services
