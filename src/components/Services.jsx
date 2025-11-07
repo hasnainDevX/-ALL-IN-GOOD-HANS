@@ -1,6 +1,10 @@
 import React from "react";
 import { Sparkles } from "lucide-react";
 import bulbline from "../assets/bulbline.png";
+import coffee from "../assets/coffee.png";
+import flower from "../assets/flower.png";
+import grid from "../assets/grid.png";  
+import tlogo from "../assets/tlogo.png";
 
 const Services = () => {
   const services = [
@@ -61,7 +65,7 @@ const Services = () => {
   ];
 
   return (
-    <section className="relative bg-[#4A2828] py-24 px-6 md:py-32 lg:py-40 overflow-hidden">
+    <section className="relative bg-rust py-24 px-6 md:py-32 lg:py-40 overflow-hidden">
       {/* Decorative Elements */}
       <div className="absolute top-20 right-10 opacity-5">
         <Sparkles className="w-32 h-32 text-yellow-200" />
@@ -70,17 +74,30 @@ const Services = () => {
         <Sparkles className="w-24 h-24 text-yellow-200" />
       </div>
 
+         <div className="absolute top-[10%] left-5 opacity-10">
+        <img src={tlogo} alt="" />
+      </div>
+
+         <div className="absolute top-[35%] right-5 opacity-10">
+        <img src={tlogo} alt="" />
+      </div>
+
+       <div className="absolute bottom-[16%] left-5 opacity-10">
+        <img src={tlogo} alt="" />
+      </div>
+
+
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Header */}
         <div className="text-center mb-16 md:mb-32 lg:mb-36">
           <div className="inline-block">
             <h2
-              className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl text-yellow-200 mb-3 relative"
-              style={{ fontFamily: "'Yellowtail', cursive" }}
+              className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl text-yellow-200 mb-3 relative capitalize"
+              style={{ fontFamily: "'Playfair Display', serif" }}
             >
               What I support with
             </h2>
-             <div className="w-[60%] h-px bg-rust mx-auto my-4"></div>
+             <div className="w-[60%] h-px bg-terracotta mx-auto my-4"></div>
           </div>
         </div>
 
@@ -136,7 +153,7 @@ const Services = () => {
                 }`}
               >
                 <p
-                  className="text-white/90 text-lg md:text-2xl leading-relaxed font-light"
+                  className="text-white text-lg md:text-2xl leading-relaxed font-light"
                   style={{ fontFamily: "'Lato', sans-serif" }}
                 >
                   {service.description}
@@ -154,7 +171,7 @@ const Services = () => {
                     {service.includes.map((item, idx) => (
                       <div key={idx} className="flex gap-3 items-start group">
                         <div className="w-1 h-1 rounded-full bg-[#E89B7E] mt-2 flex-shrink-0 group-hover:scale-150 transition-transform" />
-                        <p className="text-white/75 leading-relaxed text-sm md:text-base font-light">
+                        <p className="text-white/90 leading-relaxed text-sm md:text-base font-light">
                           {item}
                         </p>
                       </div>
@@ -164,7 +181,7 @@ const Services = () => {
 
                 <div className="pt-6 mt-6 border-t border-white/5">
                   <p
-                    className="text-white/60 italic leading-relaxed text-sm md:text-base font-light"
+                    className="text-white italic leading-relaxed text-sm md:text-base font-light"
                     style={{ fontFamily: "'Lato', sans-serif" }}
                   >
                     {service.ideal}
@@ -187,7 +204,7 @@ const Services = () => {
         ))}
 
          <button
-              className="group bg-rust text-white px-4 sm:px-6 py-3.5 sm:py-3.5 rounded-full text-xs uppercase tracking-[0.15em] hover:bg-[#ac5135] transition-all duration-300  hover:shadow-xl border border-rust/20 2xl:px-16 2xl:py-8 2xl:text-2xl cursor-pointer block mx-auto mt-24"
+              className="group bg-cream-beige text-deep-brown shadow-2xl shadow-deep-brown px-4 sm:px-6 py-3.5 sm:py-3.5 rounded-full text-xs uppercase tracking-[0.15em]  transition-all duration-300  hover:shadow-xl border border-rust/20 2xl:px-16 2xl:py-8 2xl:text-2xl cursor-pointer block mx-auto mt-24"
               style={{ fontFamily: '"Inter", sans-serif' }}
             >
               Take me to Pricing

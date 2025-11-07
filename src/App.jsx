@@ -5,6 +5,7 @@ import About from './components/About'
 import ModernMarquee from './components/Marquee'
 import WhyChooseVa from './components/WhyChooseVa'
 import Services from './components/Services'
+import Pricing from './components/Pricing'
 
 function App() {
 
@@ -17,6 +18,7 @@ function App() {
         <About />
         <WhyChooseVa />
         <Services />
+        <Pricing />
       </div>
     </>
   )

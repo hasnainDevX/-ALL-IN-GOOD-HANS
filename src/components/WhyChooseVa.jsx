@@ -1,5 +1,6 @@
 import React from "react";
-import { Star } from "lucide-react";
+import { Check } from 'lucide-react';
+import { Link } from "react-scroll";
 
 const WhyChooseVa = () => {
   const benefits = [
@@ -27,7 +28,7 @@ const WhyChooseVa = () => {
         <div className="max-w-xl">
           <h2
             className="text-5xl sm:text-6xl lg:text-7xl text-rust leading-tight mb-12"
-            style={{ fontFamily: "'Yellowtail', cursive" }}
+            style={{ fontFamily: "'Playfair Display', serif" }}
           >
             Why Hire a Virtual Assistant?
           </h2>
@@ -37,7 +38,7 @@ const WhyChooseVa = () => {
             {benefits.map((benefit, index) => (
               <div key={index} className="flex gap-4 lg:gap-6">
                 <div className="flex-shrink-0 pt-1">
-                  <Star className="w-10 h-10 lg:w-12 lg:h-12 text-[#6B9BD1] fill-[#6B9BD1]" />
+                  <Check className="w-10 h-10 lg:w-12 lg:h-12 text-[#6B9BD1]" />
                 </div>
                 <div>
                   <h3
@@ -52,11 +53,12 @@ const WhyChooseVa = () => {
                 </div>
               </div>
             ))}
+            <Link to="services" smooth={true} duration={500} offset={-70}>
             <button
               className="group bg-rust text-white px-4 sm:px-6 py-2 sm:py-3.5 rounded-full text-xs uppercase tracking-[0.15em] hover:bg-[#ac5135] transition-all duration-300  hover:shadow-xl border border-rust/20 2xl:px-16 2xl:py-8 2xl:text-2xl cursor-pointer mt-6"
               style={{ fontFamily: '"Inter", sans-serif' }}
             >
-              See my Services
+              Explore my Services
               <svg
                 className="w-4 h-4 ml-2 inline-block group-hover:translate-x-1 transition-transform duration-300"
                 fill="none"
@@ -71,6 +73,7 @@ const WhyChooseVa = () => {
                 />
               </svg>
             </button>
+            </Link>
           </div>
         </div>
       </div>
