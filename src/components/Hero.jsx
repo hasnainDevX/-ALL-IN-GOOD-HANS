@@ -48,7 +48,7 @@ const Hero = () => {
       />
 
       <img
-        className="absolute w-full h-[50%] md:h-[92%] md:w-[65%] md::left-[18%] md::-top-[2%] top-[17%] z-0 opacity-15"
+        className="md:hidden absolute w-full h-[50%] md:h-[92%] md:w-[65%] md::left-[18%] md::-top-[2%] top-[17%] z-0 opacity-15"
         src={grid}
         alt="grid Image"
       />

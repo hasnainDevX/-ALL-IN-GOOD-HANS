@@ -50,7 +50,7 @@ const ShapeCards = () => {
               >
                 {card.title}
               </h3>
-              <p className="text-center md:text- font-light text-gray-600 leading-relaxed max-w-xs">
+              <p className="text-center text-base lg:text-lg text-[#3A3331]/80 leading-relaxed max-w-xs">
                 {card.text}
               </p>
             </div>

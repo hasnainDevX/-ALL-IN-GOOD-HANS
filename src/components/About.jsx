@@ -76,7 +76,7 @@ const About = () => {
         <div className="w-16 h-px bg-amber-400 mx-auto my-4"></div>
         <p
           ref={(el) => (cardRefs.current[1] = el)}
-          className="text-gray-600 text-sm md:text-base max-w-3xl mx-auto leading-relaxed transition-all duration-700 px-2"
+          className="md:text-sm max-w-3xl mx-auto leading-relaxed transition-all duration-700 px-2 text-base lg:text-lg text-[#3A3331]/80"
         >
           Originally from Newcastle and now based in York, I support small
           business owners across the UK to create calm, structure, and clarity
@@ -92,25 +92,25 @@ const About = () => {
       {/* SHAPE YOUR BUSINESS Section */}
       <Shapes />
 
-         <button
-            className="group bg-rust text-white px-4 sm:px-6 py-3.5 sm:py-3.5  rounded-full text-xs uppercase tracking-[0.15em] hover:bg-[#ac5135] transition-all duration-300  hover:shadow-xl border border-rust/20 2xl:px-16 2xl:py-8 2xl:text-2xl cursor-pointer my-3 mt-12 mx-auto block"
-            style={{ fontFamily: '"Inter", sans-serif' }}
-          >
-            Tell me Everything
-            <svg
-              className="w-4 h-4 ml-2 inline-block group-hover:translate-x-1 transition-transform duration-300"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M9 5l7 7-7 7"
-              />
-            </svg>
-          </button>
+      <button
+        className="group bg-rust text-white px-4 sm:px-6 py-3.5 sm:py-3.5  rounded-full text-xs uppercase tracking-[0.15em] hover:bg-[#ac5135] transition-all duration-300  hover:shadow-xl border border-rust/20 2xl:px-16 2xl:py-8 2xl:text-2xl cursor-pointer my-3 mt-12 mx-auto block"
+        style={{ fontFamily: '"Inter", sans-serif' }}
+      >
+        Tell me Everything
+        <svg
+          className="w-4 h-4 ml-2 inline-block group-hover:translate-x-1 transition-transform duration-300"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M9 5l7 7-7 7"
+          />
+        </svg>
+      </button>
     </div>
   );
 };
