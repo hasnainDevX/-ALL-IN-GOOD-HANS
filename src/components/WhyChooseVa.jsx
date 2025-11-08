@@ -27,7 +27,7 @@ const WhyChooseVa = () => {
       <div className="flex items-center justify-center px-8 py-16 lg:px-16 lg:py-28">
         <div className="max-w-xl">
           <h2
-            className="text-5xl sm:text-6xl lg:text-7xl text-rust leading-tight mb-12"
+            className="text-5xl sm:text-6xl lg:text-7xl text-rust leading-tight mb-12 font-semibold"
             style={{ fontFamily: "'Playfair Display', serif" }}
           >
             Why Hire a Virtual Assistant?

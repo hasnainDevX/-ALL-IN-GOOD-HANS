@@ -36,7 +36,7 @@ const Pricing = () => {
     },
   ];
   return (
-    <div className="py-16 lg:py-28 relative">
+    <div className="py-20 lg:py-28 relative">
       <img
         className=" absolute w-20 h-20 md:w-32 md:h-32 left-[5%] md:top-[5%] top-[2%] -rotate-12 z-1"
         src={coffee}
@@ -75,7 +75,7 @@ const Pricing = () => {
           {packages.map((pkg, index) => (
             <div
               key={index}
-              className="bg-yellow-200 px-12 py-16 flex flex-col items-center text-center relative md:mb-0 mb-4"
+              className="bg-yellow-100 px-12 py-16 flex flex-col items-center text-center relative md:mb-0 mb-4"
             >
               {/* Number Badge */}
               <div className="absolute -top-8 w-20 h-20 rounded-full bg-white flex items-center justify-center font-bold text-2xl  mb-6  -rust text-deep-brown shadow-lg font-lato">
