@@ -36,7 +36,7 @@ const Pricing = () => {
     },
   ];
   return (
-    <div className="py-20 lg:py-28 relative">
+    <div className="py-28 lg:py-36 relative">
       <img
         className=" absolute w-20 h-20 md:w-32 md:h-32 left-[5%] md:top-[5%] top-[2%] -rotate-12 z-1"
         src={coffee}
@@ -47,9 +47,9 @@ const Pricing = () => {
         src={flower}
         alt="flower Image"
       />
-      <div className="textpart max-w-4xl mx-auto space-y-8 px-5 mb-16 lg:mb-24">
+      <div className="textpart max-w-4xl mx-auto space-y-3 px-5 mb-16 lg:mb-24">
         <h2
-          className="text-5xl sm:text-6xl lg:text-7xl text-rust leading-tight text-center"
+          className="text-5xl sm:text-6xl lg:text-7xl text-rust leading-tight text-center font-semibold"
           style={{ fontFamily: "'Playfair Display', serif" }}
         >
           Pricing
@@ -83,7 +83,7 @@ const Pricing = () => {
               </div>
 
               {/* Title */}
-              <h3 className="text-xl font-bold text-gray-800 mb-2">
+              <h3 className="text-3xl font-bold text-gray-800 mb-2 font-dancing ">
                 {pkg.name}
               </h3>
 

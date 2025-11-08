@@ -87,7 +87,7 @@ const Services = () => {
         {/* Header */}
         <div className="text-center mb-16 md:mb-32 lg:mb-36">
           <div className="inline-block">
-            <h2 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl text-white mb-3 relative capitalize font-playfair font-bold">
+            <h2 className="text-5xl md:text-6xl lg:text-7xl text-white mb-3 relative capitalize font-playfair font-bold">
               What I support with
             </h2>
             <div className="w-[60%] h-px bg-white/40 mx-auto my-4"></div>
