@@ -75,7 +75,7 @@ const Pricing = () => {
           {packages.map((pkg, index) => (
             <div
               key={index}
-              className="bg-yellow-100 px-12 py-16 flex flex-col items-center text-center relative md:mb-0 mb-4"
+              className="bg-cream-beige px-12 py-16 flex flex-col items-center text-center relative md:mb-0 mb-4"
             >
               {/* Number Badge */}
               <div className="absolute -top-8 w-20 h-20 rounded-full bg-white flex items-center justify-center font-bold text-2xl  mb-6  -rust text-deep-brown shadow-lg font-lato">
