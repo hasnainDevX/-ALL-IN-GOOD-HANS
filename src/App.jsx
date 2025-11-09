@@ -7,6 +7,8 @@ import WhyChooseVa from './components/WhyChooseVa'
 import Services from './components/Services'
 import Pricing from './components/Pricing'
 import Packages from './components/Packages'
+import Contact from './components/Contact'
+import Footer from './components/Footer'
 
 function App() {
 
@@ -21,6 +23,8 @@ function App() {
         <Services />
         <Pricing />
         <Packages />
+        <Contact />
+        {/* <Footer/> */}
       </div>
     </>
   )

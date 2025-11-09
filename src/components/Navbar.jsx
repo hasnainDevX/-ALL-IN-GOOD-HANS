@@ -35,7 +35,7 @@ const Navbar = () => {
     <div className="navbar-container w-full font-lato">
       <div className="flex w-full flex-col">
         <div className="topheadline w-full text-center text-cream-beige bg-terracotta rounded-b-lg">
-          <h3>Top Headline - News of exciting offer</h3>
+          <h3>Free 1:1 Consultation with a Virtual Assistant</h3>
         </div>
 
         {/* DESKTOP NAVBAR */}
