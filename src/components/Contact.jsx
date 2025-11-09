@@ -8,8 +8,8 @@ const Contact = () => {
       <h2 className="text-5xl sm:text-6xl text-rust leading-tight mb-12 font-semibold px-8 pt-16 lg:px-16 lg:pt-28 text-center max-w-5xl mx-auto font-playfair capitalize">
         Interested in a happier way to grow your business?
       </h2>
-      <div className="formcontainer bg-terracotta text-white flex justify-center items-center gap-16 p-8 lg:p-16 rounded-lg h-auto">
-        <div className="textpart flex-1 p-8 flex flex-col gap-8 justify-center">
+      <div className="formcontainer bg-terracotta text-white flex md:flex-row flex-col justify-center items-center gap-16 p-8 lg:p-16 rounded-lg h-auto">
+        <div className="textpart flex-1  pt-9 pb-4 md:px-8 md:py-8 flex flex-col gap-8 justify-center">
           <h3 className="text-4xl lg:text-5xl font-extrabold font-playfair">
             Lets Chat
           </h3>
@@ -64,7 +64,7 @@ const Contact = () => {
           </div>
         </div>
         <div className="formpart flex-2 h-full w-full">
-          <form className="flex flex-col gap-6 h-[90vh] rounded-2xl bg-[#FFF9ED] w-[80%] p-8 h-full font-lato">
+          <form className="flex flex-col gap-6 h-[90vh] rounded-2xl bg-[#FFF9ED] w-full md:w-[80%] p-8 h-full font-lato">
             {/* First Name & Last Name */}
             <div className="grid grid-cols-2 gap-6">
               <div className="flex flex-col">
