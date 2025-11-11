@@ -8,6 +8,7 @@ import Services from './components/Services'
 import SignsSection from './components/SignsSection'
 import Pricing from './components/Pricing'
 import Packages from './components/Packages'
+import Getstarted from './components/Getstarted'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
 
@@ -24,6 +25,7 @@ function App() {
         <Services />
         <Pricing />
         <Packages />
+        <Getstarted/>
         <Contact />
         <Footer/>
       </div>

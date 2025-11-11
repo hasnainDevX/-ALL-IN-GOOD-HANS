@@ -3,7 +3,11 @@ import { Link } from "react-scroll";
 
 export default function SignsSection() {
   return (
-    <section name="signs" id="signs" className="md:relative py-12 md:py-16 bg-terracotta/60">
+    <section
+      name="signs"
+      id="signs"
+      className="md:relative py-12 md:py-16 bg-terracotta/70"
+    >
       <div className="container px-5">
         <div className="relative flex justify-between items-center">
           {/* Left: Image */}
@@ -68,9 +72,25 @@ export default function SignsSection() {
                   </span>{" "}
                   things over.
                 </p>
-                <Link to="contact" smooth={true} seamless={true} duration={500} >
-                  <button className="px-10 py-4 rounded-full text-base md:text-lg font-lato font-bold bg-rust text-white cursor-pointer hover:bg-[#ac5135]  transition-all duration-300">
-                    Enquire here
+                <Link to="contact" smooth={true} seamless={true} duration={500}>
+                  <button
+                    className="group bg-rust text-white px-4 sm:px-6 py-3.5 sm:py-3.5  rounded-full text-xs uppercase tracking-[0.15em] hover:bg-[#ac5135] transition-all duration-300  hover:shadow-xl border border-rust/20 2xl:px-16 2xl:py-8 2xl:text-2xl cursor-pointer my-3"
+                    style={{ fontFamily: '"Inter", sans-serif' }}
+                  >
+                    Enquire Here 
+                    <svg
+                      className="w-4 h-4 ml-2 inline-block group-hover:translate-x-1 transition-transform duration-300"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M9 5l7 7-7 7"
+                      />
+                    </svg>
                   </button>
                 </Link>
               </div>

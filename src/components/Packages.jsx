@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from "react-scroll";
 
 const Packages = () => {
   const projects = [
@@ -80,10 +81,11 @@ const Packages = () => {
                     </li>
                   ))}
                 </ul>
-
+                <Link to="contact" smooth={true} duration={500} offset={200}>
                 <button className="w-full capitalize bg-[#9BB5D6] text-white font-bold py-3 rounded-full text-sm tracking-wide hover:bg-[#7A9CC1] transition-colors cursor-pointer">
                   I want this!
                 </button>
+                </Link>
               </div>
             </div>
           ))}

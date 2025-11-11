@@ -8,7 +8,7 @@ const Contact = () => {
       <h2 className="text-5xl sm:text-6xl text-rust leading-tight mb-12 font-semibold px-8 pt-16 lg:px-16 lg:pt-28 text-center max-w-5xl mx-auto font-playfair capitalize">
         Interested in a happier way to grow your business?
       </h2>
-      <div className="formcontainer bg-terracotta text-white flex md:flex-row flex-col justify-center items-center gap-16 p-8 lg:p-16 rounded-lg h-auto">
+      <div className="formcontainer bg-terracotta/90 text-white flex md:flex-row flex-col justify-center items-center gap-16 p-8 lg:p-16 rounded-lg h-auto">
         <div className="textpart flex-1 md:p-8 pt-9 pb-4 flex flex-col gap-8 justify-center w-full px-5 md:px-4">
           <h3 className="text-4xl lg:text-5xl font-extrabold font-playfair">
             Lets Chat
