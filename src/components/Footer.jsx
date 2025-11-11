@@ -18,7 +18,7 @@ const Footer = () => {
   ]
 
   return (
-    <footer className="bg-[#F5F1E8] py-16 px-5">
+    <footer className="bg-[#F5F1E8] pt-16 pb-4 px-5 lg:px-20">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
           {/* Navigate Column */}
@@ -43,8 +43,7 @@ const Footer = () => {
             </nav>
             <button className="bg-[#B8956A] text-white font-bold py-3 px-12 mb-8 hover:bg-[#9d7d54]">
               CONTACT
-            </button>
-            <p className="text-gray-600 text-sm">© All In Good Hans</p>
+            </button>      
           </div>
 
           {/* Resources Column */}
@@ -119,8 +118,9 @@ const Footer = () => {
               </a>
             </div>
           </div>
-        </div>
+        </div> 
       </div>
+       <p className="text-gray-600 text-sm text-center">© All In Good Hans</p>
     </footer>
   )
 }

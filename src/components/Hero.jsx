@@ -4,6 +4,7 @@ import coffee from "../assets/coffee.png";
 import flower from "../assets/flower.png";
 import grid from "../assets/grid.png";
 import bulbline from "../assets/bulbline.png";
+import { Link } from "react-scroll";
 
 const Hero = () => {
   return (
@@ -105,6 +106,7 @@ const Hero = () => {
         </div>
         {/* CTA Button */}
         <div>
+          <Link to="about" smooth={true} duration={500} offset={-70}>
           <button
             className="group bg-rust text-sage px-6 sm:px-8 py-3 sm:py-4 rounded-full font-medium text-xs sm:text-sm uppercase tracking-[0.15em] hover:bg-[#ac5135] transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 border border-rust/20 2xl:px-16 2xl:py-8 2xl:text-2xl cursor-pointer my-3"
             style={{ fontFamily: '"Inter", sans-serif' }}
@@ -124,6 +126,7 @@ const Hero = () => {
               />
             </svg>
           </button>
+          </Link>
         </div>
       </div>
       {/* Scroll indicator - adjusted for mobile */}

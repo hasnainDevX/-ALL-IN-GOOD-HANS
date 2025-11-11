@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import bulbline from "../assets/bulbline.png";
 import Shapes from "./Shapes";
+import { Link } from "react-scroll";
 const About = () => {
   const cardRefs = useRef([]);
 
@@ -31,7 +32,7 @@ const About = () => {
   }, []);
 
   return (
-    <div className="w-full py-12 md:pt-20 md:pb-32 bg-white border-b border-cream-beige">
+    <section  name="about" id="about" className="w-full py-12 md:pt-20 md:pb-32 bg-white border-b border-cream-beige">
       {/* TIME TO CHANGE Section */}
       <div className="py-12 md:pt-12 md:pb-0 px-5 bg-white text-center relative">
         {/* Rotating circular text element - only on large screens */}
@@ -89,14 +90,12 @@ const About = () => {
         <img className="w-20 h-20 mx-auto" src={bulbline} alt="" />
       </div>
 
-      {/* SHAPE YOUR BUSINESS Section */}
-      <Shapes />
-
+      <Link to="signs" smooth={true} duration={500} offset={-70}>
       <button
-        className="group bg-rust text-white px-4 sm:px-6 py-3.5 sm:py-3.5  rounded-full text-xs uppercase tracking-[0.15em] hover:bg-[#ac5135] transition-all duration-300  hover:shadow-xl border border-rust/20 2xl:px-16 2xl:py-8 2xl:text-2xl cursor-pointer my-3 mt-12 mx-auto block"
+        className="group bg-rust text-white px-4 sm:px-6 py-3.5 sm:py-3.5  rounded-full text-xs uppercase tracking-[0.15em] hover:bg-[#ac5135] transition-all duration-300  hover:shadow-xl border border-rust/20 2xl:px-16 2xl:py-8 2xl:text-2xl cursor-pointer my-3 mx-auto block"
         style={{ fontFamily: '"Inter", sans-serif' }}
       >
-        Tell me Everything
+        Do i need a VA?
         <svg
           className="w-4 h-4 ml-2 inline-block group-hover:translate-x-1 transition-transform duration-300"
           fill="none"
@@ -111,7 +110,8 @@ const About = () => {
           />
         </svg>
       </button>
-    </div>
+      </Link>
+    </section>
   );
 };
 

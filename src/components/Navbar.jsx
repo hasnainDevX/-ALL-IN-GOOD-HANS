@@ -29,7 +29,7 @@ const Navbar = () => {
     }
   };
 
-  const navItems = ["Welcome", "About", "Services", "Testimonials"];
+  const navItems = ["Welcome", "About", "Services", "Pricing"];
 
   return (
     <div className="navbar-container w-full font-lato">
@@ -90,7 +90,7 @@ const Navbar = () => {
               className="group bg-rust text-sage px-2 sm:px-4 py-3 sm:py-3 rounded-full font-medium text-xs uppercase tracking-[0.15em] hover:bg-[#ac5135] text-cream-beige transition-all duration-300 shadow-lg hover:shadow-xl border border-rust/20 2xl:px-16 2xl:py-8 2xl:text-2xl cursor-pointer my-3"
               style={{ fontFamily: '"Lato", sans-serif' }}
             >
-              Learn More
+              Contact Me
               <svg
                 className="w-4 h-4 ml-2 inline-block group-hover:translate-x-1 transition-transform duration-300"
                 fill="none"

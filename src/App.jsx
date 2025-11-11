@@ -5,13 +5,13 @@ import About from './components/About'
 import ModernMarquee from './components/Marquee'
 import WhyChooseVa from './components/WhyChooseVa'
 import Services from './components/Services'
+import SignsSection from './components/SignsSection'
 import Pricing from './components/Pricing'
 import Packages from './components/Packages'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
 
 function App() {
-
   return (
     <>
       <div className="">
@@ -19,12 +19,13 @@ function App() {
         <Hero />
         <ModernMarquee/>
         <About />
+        <SignsSection />
         <WhyChooseVa />
         <Services />
         <Pricing />
         <Packages />
         <Contact />
-        {/* <Footer/> */}
+        <Footer/>
       </div>
     </>
   )

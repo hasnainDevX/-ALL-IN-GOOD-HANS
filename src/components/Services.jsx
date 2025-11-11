@@ -2,6 +2,7 @@ import React from "react";
 import { Sparkles } from "lucide-react";
 import bulbline from "../assets/bulbline.png";
 import tlogo from "../assets/tlogo.png";
+import { Link } from "react-scroll";
 
 const Services = () => {
   const services = [
@@ -62,7 +63,7 @@ const Services = () => {
   ];
 
   return (
-    <section className="relative bg-terracotta py-24 px-6 md:py-32 lg:py-40 overflow-hidden">
+    <section name="services" id="services" className="relative bg-terracotta py-24 px-6 md:py-32 lg:py-40 overflow-hidden">
       {/* Decorative Elements */}
       <div className="absolute top-20 right-10 opacity-10">
         <Sparkles className="w-32 h-32 text-white" />
@@ -177,7 +178,7 @@ const Services = () => {
             )}
           </React.Fragment>
         ))}
-
+        <Link to="pricing" smooth={true} duration={500} offset={-70}>
         <button className="group bg-white text-terracotta shadow-lg px-6 sm:px-8 py-3.5 sm:py-4 rounded-full text-xs font-bold uppercase tracking-[0.15em] transition-all duration-300 hover:bg-white/90 hover:shadow-xl cursor-pointer block mx-auto mt-24 font-lato">
           Take me to Pricing
           <svg
@@ -194,6 +195,7 @@ const Services = () => {
             />
           </svg>
         </button>
+        </Link>
       </div>
     </section>
   );

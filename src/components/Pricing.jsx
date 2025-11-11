@@ -1,7 +1,7 @@
 import React from "react";
 import coffee from "../assets/coffee.png";
 import flower from "../assets/flower.png";
-
+import { Link } from "react-scroll";
 const Pricing = () => {
   const packages = [
     {
@@ -36,7 +36,7 @@ const Pricing = () => {
     },
   ];
   return (
-    <div className="py-28 lg:py-36 relative">
+    <section id="pricing" name="pricing" className="py-28 lg:py-36 relative">
       <img
         className=" absolute w-20 h-20 md:w-32 md:h-32 left-[5%] md:top-[5%] top-[2%] -rotate-12 z-1"
         src={coffee}
@@ -103,14 +103,16 @@ const Pricing = () => {
               </ul>
 
               {/* Button */}
+              <Link to="contact" smooth={true} duration={500} offset={-70}>
               <button className="bg-coral-500 hover:bg-coral-600 font-bold py-2 px-8 rounded-full transition-colors bg-rust text-cream-beige hover:bg-[#ac5135] cursor-pointer">
                 {pkg.cta}
               </button>
+              </Link>
             </div>
           ))}
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

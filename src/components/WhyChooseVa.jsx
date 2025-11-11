@@ -22,7 +22,7 @@ const WhyChooseVa = () => {
   ];
 
   return (
-    <section className="grid lg:grid-cols-2 min-h-[500px] lg:min-h-[600px]">
+    <section className="grid lg:grid-cols-2 min-h-[500px] lg:min-h-[600px]" id="whychooseva">
       {/* Left - Text Content */}
       <div className="flex items-center justify-center px-8 py-16 lg:px-16 lg:py-28">
         <div className="max-w-xl">

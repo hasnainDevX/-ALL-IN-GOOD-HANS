@@ -4,7 +4,7 @@ import { Link } from "react-scroll";
 
 const Contact = () => {
   return (
-    <div className="h-">
+    <div name="contact" id="contact">
       <h2 className="text-5xl sm:text-6xl text-rust leading-tight mb-12 font-semibold px-8 pt-16 lg:px-16 lg:pt-28 text-center max-w-5xl mx-auto font-playfair capitalize">
         Interested in a happier way to grow your business?
       </h2>
@@ -74,7 +74,7 @@ const Contact = () => {
                 <input
                   type="text"
                   required
-                  className="border-b-2 border-gray-800 bg-transparent focus:outline-none focus:border-rust transition-colors py-2 text-gray-800"
+                  className="border-b-2 border-gray-600 bg-transparent focus:outline-none focus:border-rust transition-colors py-2 text-gray-800"
                 />
               </div>
               <div className="flex flex-col">
@@ -84,7 +84,7 @@ const Contact = () => {
                 <input
                   type="text"
                   required
-                  className="border-b-2 border-gray-800 bg-transparent focus:outline-none focus:border-rust transition-colors py-2 text-gray-800"
+                  className="border-b-2 border-gray-600 bg-transparent focus:outline-none focus:border-rust transition-colors py-2 text-gray-800"
                 />
               </div>
             </div>
@@ -97,7 +97,7 @@ const Contact = () => {
               <input
                 type="email"
                 required
-                className="border-b-2 border-gray-800 bg-transparent focus:outline-none focus:border-rust transition-colors py-2 text-gray-800"
+                className="border-b-2 border-gray-600 bg-transparent focus:outline-none focus:border-rust transition-colors py-2 text-gray-800"
               />
             </div>
 
@@ -110,7 +110,7 @@ const Contact = () => {
               <input
                 type="text"
                 required
-                className="border-b-2 border-gray-800 bg-transparent focus:outline-none focus:border-rust transition-colors py-2 text-gray-800"
+                className="border-b-2 border-gray-600 bg-transparent focus:outline-none focus:border-rust transition-colors py-2 text-gray-800"
               />
             </div>
 
@@ -145,7 +145,7 @@ const Contact = () => {
               <textarea
                 required
                 rows="4"
-                className="border-b-2 border-gray-800 bg-transparent focus:outline-none focus:border-rust transition-colors py-2 text-gray-800 resize-none"
+                className="border-b-2 border-gray-600 bg-transparent focus:outline-none focus:border-rust transition-colors py-2 text-gray-800 resize-none"
               />
             </div>
 
