@@ -69,12 +69,12 @@ const Services = () => {
     <section name="services" id="services" className="relative bg-terracotta py-24 px-6 md:py-32 lg:py-40 overflow-hidden">
       {/* Decorative Elements */}
        <img
-        className=" absolute w-20 h-20 md:w-32 md:h-32 left-[5%] md:top-[5%] top-[2%] -rotate-12 z-1"
+        className=" absolute w-20 h-20 md:w-32 md:h-32 left-[5%] md:top-[5%] top-[1%] -rotate-12 z-1"
         src={coffee}
         alt="coffee Image"
       />
       <img
-        className=" absolute w-20 h-20 md:w-32 md:h-32 right-[5%] md:top-[5%] top-[2%] -rotate-12 z-1"
+        className=" absolute w-20 h-20 md:w-32 md:h-32 right-[5%] md:top-[5%] top-[1%] -rotate-12 z-1"
         src={flower}
         alt="flower Image"
       />
@@ -182,7 +182,7 @@ const Services = () => {
             {/* Bulbline Divider (Between Services) */}
             {index !== services.length - 1 && (
               <div
-                className="w-full h-10 md:h-40 my-20 bg-repeat-x bg-center opacity-20"
+                className="w-full h-28 md:h-40 my-20 bg-repeat-x bg-center opacity-20"
                 style={{
                   backgroundImage: `url(${service.image})`,
                   backgroundSize: "contain",

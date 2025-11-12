@@ -20,11 +20,11 @@ const Contact = () => {
             Lets Chat
           </h3>
           <div className="emailinfo">
-            <h4 className="text-3xl font-semibold text-yellow-100">Email</h4>
-            <h4 className="text-2xl">allingoodhans@gmail.com</h4>
+            <h4 className="text-2xl font-semibold text-yellow-100">Email</h4>
+            <h4 className="text-xl">allingoodhans@gmail.com</h4>
           </div>
           <div className="socialinfo">
-            <h4 className="text-3xl font-semibold text-yellow-100">
+            <h4 className="text-2xl font-semibold text-yellow-100">
               Social Media
             </h4>
             <div className="icons flex gap-5 justify-start items-center mt-4">
@@ -37,7 +37,7 @@ const Contact = () => {
             </div>
           </div>
           <div className="calendlyinfo">
-            <h4 className="text-3xl font-semibold text-yellow-100">
+            <h4 className="text-2xl font-semibold text-yellow-100">
               Book a Call
             </h4>
             <Link

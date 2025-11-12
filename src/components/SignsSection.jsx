@@ -7,7 +7,7 @@ export default function SignsSection() {
     <section
       name="signs"
       id="signs"
-      className="md:relative py-12 md:py-16 bg-terracotta/70"
+      className="relative py-12 md:py-16 bg-terracotta/70"
     >
         <img
         className=" absolute w-20 h-20 md:w-32 md:h-32 right-[3%] top-[2%] -rotate-12 z-1"
