@@ -182,10 +182,10 @@ const Navbar = () => {
               Pricing
             </button>
             <button 
-              onClick={() => scrollToSection("Testimonials")}
+              onClick={() => scrollToSection("packages")}
               className="block w-full text-left py-4 text-app-black hover:text-sage hover:translate-x-2 transition-all duration-300 font-light tracking-wider text-sm uppercase border-b border-soft cursor-pointer"
             >
-              Testimonials
+              Packages
             </button>
             <button 
               onClick={() => scrollToSection("Contact")}
