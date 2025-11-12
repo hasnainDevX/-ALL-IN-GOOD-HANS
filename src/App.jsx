@@ -1,4 +1,5 @@
 import React from 'react'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import About from './components/About'
@@ -11,25 +12,32 @@ import Packages from './components/Packages'
 import Getstarted from './components/Getstarted'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
+import NotFound from './components/NotFound'
 
 function App() {
   return (
-    <>
-      <div className="">
-        <Navbar />
-        <Hero />
-        <ModernMarquee/>
-        <About />
-        <SignsSection />
-        <WhyChooseVa />
-        <Services />
-        <Pricing />
-        <Packages />
-        <Getstarted/>
-        <Contact />
-        <Footer/>
-      </div>
-    </>
+      <Routes>
+        <Route 
+          path="/" 
+          element={
+            <>
+              <Navbar />
+              <Hero />
+              <ModernMarquee/>
+              <About />
+              <SignsSection />
+              <WhyChooseVa />
+              <Services />
+              <Pricing />
+              <Packages />
+              <Getstarted/>
+              <Contact />
+              <Footer/>
+            </>
+          } 
+        />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
   )
 }
 

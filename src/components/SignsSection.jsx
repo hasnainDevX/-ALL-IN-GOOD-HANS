@@ -32,7 +32,7 @@ export default function SignsSection() {
           </div>
 
           {/* Right: Content Card - Overlapping */}
-          <div className="absolute relative left-5 right-5 md:right-0  md:-ml-32 lg:-ml-40 bg-white p-10 md:p-16 lg:p-20 max-w-2xl shadow-lg md:h-[70%] h-auto">
+          <div className="absolute relative left-5 right-5 md:right-0  md:-ml-32 lg:-ml-40 bg-white p-10 md:p-16 lg:p-20 max-w-2xl md:shadow-lg md:h-[70%] h-auto shadow-2xl">
             <h2
               className="text-2xl md:text-5xl font-light text-amber-950 mb-2 transition-all duration-700"
               style={{ fontFamily: "Playfair Display, serif" }}

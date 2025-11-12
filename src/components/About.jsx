@@ -1,7 +1,7 @@
-import React, { useEffect, useRef } from "react";
-import bulbline from "../assets/bulbline.png";
-import Shapes from "./Shapes";
+import React from "react";
+import { useEffect, useRef } from "react";
 import { Link } from "react-scroll";
+import bulbline from "../assets/bulbline.png";
 const About = () => {
   const cardRefs = useRef([]);
 
