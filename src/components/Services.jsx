@@ -1,8 +1,11 @@
 import React from "react";
-import { Sparkles } from "lucide-react";
+import { Grid, Sparkles } from "lucide-react";
 import bulbline from "../assets/bulbline.png";
 import tlogo from "../assets/tlogo.png";
 import { Link } from "react-scroll";
+import flower from "../assets/flower.png";
+import coffee from "../assets/coffee.png";
+import grid from "../assets/theticborder.png";
 
 const Services = () => {
   const services = [
@@ -65,6 +68,16 @@ const Services = () => {
   return (
     <section name="services" id="services" className="relative bg-terracotta py-24 px-6 md:py-32 lg:py-40 overflow-hidden">
       {/* Decorative Elements */}
+       <img
+        className=" absolute w-20 h-20 md:w-32 md:h-32 left-[5%] md:top-[5%] top-[2%] -rotate-12 z-1"
+        src={coffee}
+        alt="coffee Image"
+      />
+      <img
+        className=" absolute w-20 h-20 md:w-32 md:h-32 right-[5%] md:top-[5%] top-[2%] -rotate-12 z-1"
+        src={flower}
+        alt="flower Image"
+      />
       <div className="absolute top-20 right-10 opacity-10">
         <Sparkles className="w-32 h-32 text-white" />
       </div>
@@ -72,16 +85,16 @@ const Services = () => {
         <Sparkles className="w-24 h-24 text-white" />
       </div>
 
-      <div className="absolute top-[10%] left-5 opacity-5">
-        <img src={tlogo} alt="" className="w-20 h-20" />
+      <div className="absolute top-[10%] left-5 opacity-15">
+        <img src={tlogo} alt="" className="w-96 h-96" />
       </div>
 
-      <div className="absolute top-[35%] right-5 opacity-5">
-        <img src={tlogo} alt="" className="w-20 h-20" />
+      <div className="absolute top-[38%] right-5 opacity-15">
+        <img src={tlogo} alt="" className="w-96 h-96" />
       </div>
 
-      <div className="absolute bottom-[16%] left-5 opacity-5">
-        <img src={tlogo} alt="" className="w-20 h-20" />
+      <div className="absolute bottom-[20%] left-5 opacity-15">
+        <img src={tlogo} alt="" className="w-96 h-96" />
       </div>
 
       <div className="max-w-7xl mx-auto relative z-10">
@@ -169,7 +182,7 @@ const Services = () => {
             {/* Bulbline Divider (Between Services) */}
             {index !== services.length - 1 && (
               <div
-                className="w-full h-10 md:h-14 my-20 bg-repeat-x bg-center opacity-20"
+                className="w-full h-10 md:h-40 my-20 bg-repeat-x bg-center opacity-20"
                 style={{
                   backgroundImage: `url(${service.image})`,
                   backgroundSize: "contain",

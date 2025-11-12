@@ -1,6 +1,7 @@
 import React from "react";
 import coffee from "../assets/coffee.png";
 import flower from "../assets/flower.png";
+import bulbline from "../assets/bulbline.png";
 import { Link } from "react-scroll";
 const Pricing = () => {
   const packages = [
@@ -47,7 +48,7 @@ const Pricing = () => {
         src={flower}
         alt="flower Image"
       />
-      <div className="textpart max-w-4xl mx-auto space-y-3 px-5 mb-16 lg:mb-24">
+      <div className="textpart max-w-4xl mx-auto space-y-3 px-5 mb-10 lg:mb-12">
         <h2
           className="text-5xl sm:text-6xl lg:text-7xl text-rust leading-tight text-center font-semibold"
           style={{ fontFamily: "'Playfair Display', serif" }}
@@ -59,7 +60,9 @@ const Pricing = () => {
           Detailed pricing information will be provided here soon. Stay tuned!
           Detailed pricing
         </p>
+      <img className="w-20 h-20 mx-auto" src={bulbline} alt="bulbline" />
       </div>
+
 
       {/* packages section */}
       <div

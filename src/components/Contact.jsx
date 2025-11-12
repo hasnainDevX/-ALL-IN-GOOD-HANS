@@ -1,13 +1,19 @@
 import React from "react";
 import { Instagram, Linkedin, Mail } from "lucide-react";
 import { Link } from "react-scroll";
+import flower from "../assets/flower.png";
 
 const Contact = () => {
   return (
-    <div name="contact" id="contact" className="">
-      <h2 className="text-5xl sm:text-6xl text-rust leading-tight mb-12 font-semibold px-8 pt-16 lg:px-16 lg:pt-28 text-center max-w-5xl mx-auto font-playfair capitalize">
+    <div className="relative" name="contact" id="contact">
+      <h2 className="text-5xl sm:text-6xl text-rust leading-tight my-12 font-semibold px-8 pt-16 lg:px-16 lg:pt-28 text-center max-w-5xl mx-auto font-playfair capitalize">
         Interested in a happier way to grow your business?
       </h2>
+      <img
+        className=" absolute w-20 h-20 md:w-32 md:h-32 right-[5%] md:top-[0%] top-[2%] -rotate-12 z-1"
+        src={flower}
+        alt="flower Image"
+      />
       <div className="formcontainer bg-terracotta/90 text-white flex md:flex-row flex-col justify-center items-center gap-16 p-8 lg:p-16 rounded-lg h-auto py-12 lg:py-28">
         <div className="textpart flex-1 md:p-8 pt-9 pb-4 flex flex-col gap-8 justify-center w-full px-5 md:px-4">
           <h3 className="text-5xl lg:text-6xl font-extrabold font-playfair">

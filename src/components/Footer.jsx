@@ -1,29 +1,30 @@
-import React from 'react'
-import { Instagram, Facebook, Mail } from 'lucide-react'
+import React from "react";
+import { Instagram, Facebook, Mail } from "lucide-react";
+import image1 from "../assets/image1.jpg";
+import image2 from "../assets/image2.jpg";
+import image3 from "../assets/image3.jpg";
 
 const Footer = () => {
   const navLinks = [
-    { name: 'Home', href: '#' },
-    { name: 'Services', href: '#' },
-    { name: 'About', href: '#' },
-  ]
+    { name: "About", href: "#about" },
+    { name: "Services", href: "#services" },
+    { name: "Pricing", href: "#pricing" },
+    { name: "Packages", href: "#packages" },
+  ];
 
   const instagramImages = [
-    'https://images.unsplash.com/photo-1517841905240-472988babdf9?w=400&q=80',
-    'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&q=80',
-    'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&q=80',
-    'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80',
-    'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&q=80',
-    'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&q=80',
-  ]
+    image1,
+    image2,
+    image3,
+  ];
 
   return (
-    <footer className="bg-[#F5F1E8] pt-16 pb-4 px-5 lg:px-20">
+    <footer className="bg-cream-beige/40 pt-16 pb-4 px-5 lg:px-20">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
           {/* Navigate Column */}
           <div>
-            <h3 
+            <h3
               className="text-4xl mb-8 text-gray-800"
               style={{ fontFamily: "'Playfair Display', serif" }}
             >
@@ -32,7 +33,7 @@ const Footer = () => {
             <nav className="space-y-4 mb-8">
               {navLinks.map((link, index) => (
                 <div key={index}>
-                  <a 
+                  <a
                     href={link.href}
                     className="text-[#B8956A] text-lg hover:text-[#9d7d54] inline-block border-b-2 border-[#B8956A]"
                   >
@@ -41,43 +42,36 @@ const Footer = () => {
                 </div>
               ))}
             </nav>
-            <button className="bg-[#B8956A] text-white font-bold py-3 px-12 mb-8 hover:bg-[#9d7d54]">
+            <button className="bg-rust text-white font-bold py-3 px-12 mb-8 hover:bg-terracotta cursor-pointer">
               CONTACT
-            </button>      
+            </button>
           </div>
 
           {/* Resources Column */}
-          <div>
-            <h3 
+          <div className="space-y-4">
+            <h3
               className="text-4xl mb-8 text-gray-800"
               style={{ fontFamily: "'Playfair Display', serif" }}
             >
-              Resources
+              Privacy Policy
             </h3>
-            <div className="space-y-4 mb-6">
-              <a 
-                href="#"
-                className="text-[#B8956A] text-lg hover:text-[#9d7d54] inline-block border-b-2 border-[#B8956A]"
-              >
-                30% off HoneyBook
-              </a>
-              <br />
-              <a 
-                href="#"
-                className="text-[#B8956A] text-lg hover:text-[#9d7d54] inline-block border-b-2 border-[#B8956A]"
-              >
-                Template by Big Cat Creative
+            <div className="text-deep-brown">
+              <div className="italic">Click below to see the Privacy Policy</div>
+              <a className="underline" href="https://drive.google.com/file/d/1vNlJQP8s29n5Eba6rz0ShupGZZ1HLyva/view?usp=drivesdk">
+                Privacy Policy
               </a>
             </div>
             <p className="text-gray-700 text-sm leading-relaxed">
-              All In Good Hans supports busy professionals and entrepreneurs with virtual assistant services, 
-              operational setup, and organisational systems to help them streamline and grow their businesses.
+              All In Good Hans supports busy professionals and entrepreneurs
+              with virtual assistant services, operational setup, and
+              organisational systems to help them streamline and grow their
+              businesses.
             </p>
           </div>
 
           {/* Instagram Column */}
           <div>
-            <h3 
+            <h3
               className="text-4xl mb-8 text-gray-800"
               style={{ fontFamily: "'Playfair Display', serif" }}
             >
@@ -85,44 +79,47 @@ const Footer = () => {
             </h3>
             <div className="grid grid-cols-3 gap-2 mb-8">
               {instagramImages.map((img, index) => (
-                <div 
+                <div
                   key={index}
-                  className="aspect-square overflow-hidden rounded-lg"
+                  className="overflow-hidden rounded-lg"
                 >
-                  <img 
+                  <img
                     src={img}
                     alt={`Instagram post ${index + 1}`}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full "
                   />
                 </div>
               ))}
             </div>
             <div className="flex gap-4">
-              <a 
-                href="#"
-                className="w-10 h-10 bg-black rounded-full flex items-center justify-center hover:bg-gray-800"
+              <a
+                href="https://www.instagram.com/allingoodhans"
+                className="w-10 h-10 bg-rust rounded-full flex items-center justify-center hover:bg-terracotta"
+                target="_blank"
               >
                 <Instagram className="w-5 h-5 text-white" />
               </a>
-              <a 
-                href="#"
-                className="w-10 h-10 bg-black rounded-full flex items-center justify-center hover:bg-gray-800"
+              <a
+                href="https://www.facebook.com/share/1Gso45Wwfw/silent"
+                target="_blank"
+                className="w-10 h-10 bg-rust rounded-full flex items-center justify-center hover:bg-terracotta"
               >
                 <Facebook className="w-5 h-5 text-white" />
               </a>
-              <a 
-                href="#"
-                className="w-10 h-10 bg-black rounded-full flex items-center justify-center hover:bg-gray-800"
+              <a
+                href="mailto:allingoodhans@gmail.com"
+                className="w-10 h-10 bg-rust rounded-full flex items-center justify-center hover:bg-terracotta"
+                target="_blank"
               >
                 <Mail className="w-5 h-5 text-white" />
               </a>
             </div>
           </div>
-        </div> 
+        </div>
       </div>
-       <p className="text-gray-600 text-sm text-center">© All In Good Hans</p>
+      <p className="text-gray-600 text-sm text-center">All in Good Hans © 2025 | All Rights Reserved </p>
     </footer>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;

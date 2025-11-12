@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-scroll";
+import coffee from "../assets/coffee.png";
 
 export default function SignsSection() {
   return (
@@ -8,6 +9,12 @@ export default function SignsSection() {
       id="signs"
       className="md:relative py-12 md:py-16 bg-terracotta/70"
     >
+        <img
+        className=" absolute w-20 h-20 md:w-32 md:h-32 right-[3%] top-[2%] -rotate-12 z-1"
+        src={coffee}
+        alt="coffee Image"
+      />
+
       <div className="container px-5">
         <div className="relative flex justify-between items-center">
           {/* Left: Image */}

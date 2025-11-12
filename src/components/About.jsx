@@ -87,7 +87,7 @@ const About = () => {
           confidently. I combine practical organisation with a friendly,
           flexible approach so you can focus on what matters most.
         </p>
-        <img className="w-20 h-20 mx-auto" src={bulbline} alt="" />
+        <img className="w-20 h-20 mx-auto" src={bulbline} alt="bulbline" />
       </div>
 
       <Link to="signs" smooth={true} duration={500} offset={-70}>

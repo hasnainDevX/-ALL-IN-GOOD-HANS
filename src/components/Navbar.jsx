@@ -5,7 +5,6 @@ import { useState, useEffect } from "react";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [activeLink, setActiveLink] = useState("Welcome");
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const closeMobileMenu = () => {
@@ -57,7 +56,7 @@ const Navbar = () => {
                     {item}
                     <span
                       className={`absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-terracotta to bg-rust duration-300 ${
-                        activeLink === item
+                        item == "Welcome"
                           ? "w-full"
                           : "w-0 group-hover:w-full"
                       }`}

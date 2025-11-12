@@ -1,5 +1,8 @@
-import React from 'react'
+import React from "react";
 import { Link } from "react-scroll";
+import coffee from "../assets/coffee.png";
+import flower from "../assets/flower.png";
+import bulbline from "../assets/bulbline.png";
 
 const Packages = () => {
   const projects = [
@@ -25,7 +28,8 @@ const Packages = () => {
     },
     {
       name: "Operational Assets Setup",
-      subtitle: "Bring consistency and professionalism to your business operations.",
+      subtitle:
+        "Bring consistency and professionalism to your business operations.",
       points: [
         "SOP creation and documentation",
         "Onboarding guides and training templates",
@@ -33,20 +37,28 @@ const Packages = () => {
       ],
     },
   ];
-
   return (
-    <div className="py-20 px-5">
-      <div className="max-w-6xl mx-auto">
+    <div id="packages" name="packages" className="py-20 px-5 relative">
+      <img
+        className=" absolute w-20 h-20 md:w-32 md:h-32 left-[5%] top-[0%] -rotate-12 z-1"
+        src={coffee}
+        alt="coffee Image"
+      />
+      <img
+        className=" absolute w-20 h-20 md:w-32 md:h-32 right-[5%] top-[0%]  -rotate-12 z-1"
+        src={flower}
+        alt="flower Image"
+      />
+      <div className="max-w-6xl mx-auto ">
         <div className="text-center mb-16 space-y-3">
-          <h2
-            className="text-5xl sm:text-6xl lg:text-7xl text-rust leading-tight text-center font-semibold font-playfair"
-          >
+          <h2 className="text-5xl sm:text-6xl lg:text-7xl text-rust leading-tight text-center font-semibold font-playfair">
             Packages & Projects
           </h2>
-            <p className="text-gray-600 text-sm md:text-base max-w-2xl mx-auto leading-relaxed transition-all duration-700 text-center">
-            Every business is different. These examples show how support can look in practice, 
-            but everything is tailored to your needs.
+          <p className="text-gray-600 text-sm md:text-base max-w-2xl mx-auto leading-relaxed transition-all duration-700 text-center">
+            Every business is different. These examples show how support can
+            look in practice, but everything is tailored to your needs.
           </p>
+          <img className="w-20 h-20 mx-auto" src={bulbline} alt="bulbline" />
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -63,9 +75,7 @@ const Packages = () => {
               </div>
 
               <div className="bg-[#FFF9ED] rounded-3xl px-12 py-16 flex flex-col w-full">
-                <h3
-                  className="text-3xl text-terracotta mb-3 text-center font-lato font-semibold"
-                >
+                <h3 className="text-3xl text-terracotta mb-3 text-center font-lato font-semibold">
                   {project.name}
                 </h3>
 
@@ -76,15 +86,19 @@ const Packages = () => {
                 <ul className="space-y-3 mb-8 md:flex-grow">
                   {project.points.map((point, i) => (
                     <li key={i} className="flex items-start gap-3">
-                      <span className="text-[#B85C3E] font-bold text-lg">•</span>
-                      <span className="text-gray-800 text-sm leading-relaxed">{point}</span>
+                      <span className="text-[#B85C3E] font-bold text-lg">
+                        •
+                      </span>
+                      <span className="text-gray-800 text-sm leading-relaxed">
+                        {point}
+                      </span>
                     </li>
                   ))}
                 </ul>
                 <Link to="contact" smooth={true} duration={500} offset={200}>
-                <button className="w-full capitalize bg-[#9BB5D6] text-white font-bold py-3 rounded-full text-sm tracking-wide hover:bg-[#7A9CC1] transition-colors cursor-pointer">
-                  I want this!
-                </button>
+                  <button className="w-full capitalize bg-[#9BB5D6] text-white font-bold py-3 rounded-full text-sm tracking-wide hover:bg-[#7A9CC1] transition-colors cursor-pointer">
+                    I want this!
+                  </button>
                 </Link>
               </div>
             </div>
@@ -92,7 +106,7 @@ const Packages = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Packages
+export default Packages;
