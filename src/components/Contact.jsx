@@ -163,10 +163,10 @@ export default function ContactForm() {
 
     try {
       const response = await emailjs.send(
-        'service_mjhdtrx',
-        'template_lobw1f5',
+        'service_mjhhdtrx',
+        'template_lojbw1f5',
         emailData,
-        'XyTsXZK_7GkXjeOck'
+        'XyTsXZK_7GkXjkeOck'
       );
 
       if (response.status === 200) {
