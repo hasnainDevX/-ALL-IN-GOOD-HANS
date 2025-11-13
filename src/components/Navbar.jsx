@@ -2,6 +2,7 @@ import React from "react";
 import logo from "../assets/tlogo.png";
 import { Instagram, Linkedin, Mail, Menu, X } from "lucide-react";
 import { useState, useEffect } from "react";
+import { Link } from "react-scroll";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -75,16 +76,17 @@ const Navbar = () => {
           </div>
           <div className="icons flex-1 flex justify-center gap-12 items-center">
             <div className="icons flex gap-5 justify-center items-center">
-              <div className="icon1">
+              <a href="https://www.instagram.com/allingoodhans" target="_blank" className="icon1">
                 <Instagram className="text-rust cursor-pointer" size={25} />
-              </div>
-              <div className="icon2">
+              </a>
+              <a href="#" target="_blank" className="icon2">
                 <Linkedin className="text-rust cursor-pointer" size={25} />
-              </div>
-              <div className="icon3">
+              </a>
+              <a href="mailto:allingoodhans@gmail.com" className="icon3">
                 <Mail className="text-rust cursor-pointer" size={25} />
-              </div>
+              </a>
             </div>
+            <Link to="contact" smooth={true} duration={500}>
             <button
               className="group bg-rust text-sage px-2 sm:px-4 py-3 sm:py-3 rounded-full font-medium text-xs uppercase tracking-[0.15em] hover:bg-[#ac5135] text-cream-beige transition-all duration-300 shadow-lg hover:shadow-xl border border-rust/20 2xl:px-16 2xl:py-8 2xl:text-2xl cursor-pointer my-3"
               style={{ fontFamily: '"Lato", sans-serif' }}
@@ -104,6 +106,7 @@ const Navbar = () => {
                 />
               </svg>
             </button>
+            </Link>
           </div>
         </nav>
 

@@ -1,172 +1,650 @@
-import React from "react";
-import { Instagram, Linkedin, Mail } from "lucide-react";
-import { Link } from "react-scroll";
-import flower from "../assets/flower.png";
+import React, { useState, useRef } from "react";
+import emailjs from "emailjs-com";
 
-const Contact = () => {
+export default function ContactForm() {
+  const formRef = useRef();
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    companyBusiness: "",
+    services: [],
+    message: "",
+    newsletter: false,
+  });
+
+  const [touched, setTouched] = useState({});
+  const [errors, setErrors] = useState({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState(null);
+
+  const validateName = (value) => {
+    if (!value.trim()) return "This field is required";
+    if (value.trim().length < 2) return "Must be at least 2 characters";
+    if (/\d/.test(value)) return "Numbers are not allowed";
+    return "";
+  };
+
+  const validateEmail = (value) => {
+    if (!value.trim()) return "Email is required";
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(value)) return "Please enter a valid email";
+    return "";
+  };
+
+  const validateRequired = (value) => {
+    if (!value.trim()) return "This field is required";
+    return "";
+  };
+
+  const validateServices = (services) => {
+    if (services.length === 0) return "Please select at least one service";
+    return "";
+  };
+
+  const validateField = (name, value) => {
+    switch (name) {
+      case "firstName":
+      case "lastName":
+        return validateName(value);
+      case "email":
+        return validateEmail(value);
+      case "companyBusiness":
+      case "message":
+        return validateRequired(value);
+      case "services":
+        return validateServices(value);
+      default:
+        return "";
+    }
+  };
+
+  const handleInputChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    const newValue = type === "checkbox" ? checked : value;
+    
+    setFormData((prev) => ({
+      ...prev,
+      [name]: newValue,
+    }));
+
+    if (touched[name]) {
+      const error = validateField(name, newValue);
+      setErrors((prev) => ({
+        ...prev,
+        [name]: error,
+      }));
+    }
+  };
+
+  const handleServiceChange = (service) => {
+    const newServices = formData.services.includes(service)
+      ? formData.services.filter(s => s !== service)
+      : [...formData.services, service];
+    
+    setFormData((prev) => ({
+      ...prev,
+      services: newServices,
+    }));
+
+    if (touched.services) {
+      const error = validateServices(newServices);
+      setErrors((prev) => ({
+        ...prev,
+        services: error,
+      }));
+    }
+  };
+
+  const handleBlur = (e) => {
+    const { name, value } = e.target;
+    setTouched((prev) => ({
+      ...prev,
+      [name]: true,
+    }));
+
+    const error = validateField(name, value);
+    setErrors((prev) => ({
+      ...prev,
+      [name]: error,
+    }));
+  };
+
+  const handleServicesBlur = () => {
+    setTouched((prev) => ({
+      ...prev,
+      services: true,
+    }));
+
+    const error = validateServices(formData.services);
+    setErrors((prev) => ({
+      ...prev,
+      services: error,
+    }));
+  };
+
+  const isFormValid = () => {
+    const requiredFields = ["firstName", "lastName", "email", "companyBusiness", "message", "services"];
+    return requiredFields.every(field => {
+      const error = validateField(field, formData[field]);
+      return !error;
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    
+    const newErrors = {};
+    Object.keys(formData).forEach(key => {
+      if (key !== "newsletter") {
+        const error = validateField(key, formData[key]);
+        if (error) newErrors[key] = error;
+      }
+    });
+
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+      setTouched(Object.keys(formData).reduce((acc, key) => ({ ...acc, [key]: true }), {}));
+      return;
+    }
+
+    setIsSubmitting(true);
+    setSubmitStatus(null);
+
+    const emailData = {
+      firstName: formData.firstName,
+      lastName: formData.lastName,
+      email: formData.email,
+      companyBusiness: formData.companyBusiness,
+      services: formData.services.join(", "),
+      message: formData.message,
+      newsletter: formData.newsletter ? 'Yes, they want to receive updates' : 'No newsletter subscription',
+    };
+
+    try {
+      const response = await emailjs.send(
+        'service_mjhdtrx',
+        'template_lobw1f5',
+        emailData,
+        'XyTsXZK_7GkXjeOck'
+      );
+
+      if (response.status === 200) {
+        setSubmitStatus("success");
+        setFormData({
+          firstName: "",
+          lastName: "",
+          email: "",
+          companyBusiness: "",
+          services: [],
+          message: "",
+          newsletter: false,
+        });
+        setTouched({});
+        setErrors({});
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      setSubmitStatus("error");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const getInputClassName = (fieldName) => {
+    const baseClass = "w-full px-4 py-3 bg-white border rounded-3xl transition-all duration-300 text-[#000000] placeholder-gray-400";
+    
+    if (touched[fieldName] && errors[fieldName]) {
+      return `${baseClass} border-soft-peach focus:outline-none focus:ring-2 focus:ring-red-2`;
+    }
+    
+    if (touched[fieldName] && !errors[fieldName] && formData[fieldName]) {
+      return `${baseClass} border-terracotta focus:outline-none focus:ring-2 focus:ring-terracotta`;
+    }
+    
+    return `${baseClass} border-soft-peach focus:outline-none focus:ring-2 focus:ring-terracotta hover:border-terracotta`;
+  };
+
   return (
-    <div className="relative" name="contact" id="contact">
-      <h2 className="text-5xl sm:text-6xl text-rust leading-tight my-12 font-semibold px-8 pt-16 lg:px-16 lg:pt-28 text-center max-w-5xl mx-auto font-playfair capitalize">
-        Interested in a happier way to grow your business?
-      </h2>
-      <img
-        className=" absolute w-20 h-20 md:w-32 md:h-32 right-[5%] md:top-[0%] top-[2%] -rotate-12 z-1"
-        src={flower}
-        alt="flower Image"
-      />
-      <div className="formcontainer bg-terracotta/90 text-white flex md:flex-row flex-col justify-center items-center gap-16 p-8 lg:p-16 rounded-lg h-auto py-12 lg:py-28">
-        <div className="textpart flex-1 md:p-8 pt-9 pb-4 flex flex-col gap-8 justify-center w-full px-5 md:px-4">
-          <h3 className="text-5xl lg:text-6xl font-extrabold font-playfair">
-            Lets Chat
-          </h3>
-          <div className="emailinfo">
-            <h4 className="text-2xl font-semibold text-yellow-100">Email</h4>
-            <h4 className="text-xl">allingoodhans@gmail.com</h4>
-          </div>
-          <div className="socialinfo">
-            <h4 className="text-2xl font-semibold text-yellow-100">
-              Social Media
-            </h4>
-            <div className="icons flex gap-5 justify-start items-center mt-4">
-              <Instagram
-                className="text-cream-beige cursor-pointer"
-                size={25}
-              />
-              <Linkedin className="text-cream-beige cursor-pointer" size={25} />
-              <Mail className="text-cream-beige cursor-pointer" size={25} />
-            </div>
-          </div>
-          <div className="calendlyinfo">
-            <h4 className="text-2xl font-semibold text-yellow-100">
-              Book a Call
-            </h4>
-            <Link
-              className="calendly-link"
-              to="services"
-              smooth={true}
-              duration={500}
-              offset={-70}
-            >
-              <button
-                className="group bg-rust text-white px-4 sm:px-6 py-3.5 sm:py-3.5  rounded-full text-xs uppercase tracking-wider hover:bg-[#ac5135] transition-all duration-300  hover:shadow-xl border border-rust/20 2xl:px-16 2xl:py-8 2xl:text-2xl cursor-pointer mt-4 -translate-x-1"
-                style={{ fontFamily: '"Inter", sans-serif' }}
-              >
-                Book a Call
-                <svg
-                  className="w-4 h-4 ml-2 inline-block group-hover:translate-x-1 transition-transform duration-300"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M9 5l7 7-7 7"
-                  />
-                </svg>
-              </button>
-            </Link>
-          </div>
+    <section id="contact" className="py-24 bg-white ge" data-testid="section-contact">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-16">
+          <h2
+            className="text-5xl md:text-6xl font-light text-rust mb-6"
+            style={{ fontFamily: "Playfair Display, serif" }}
+          >
+            Get in <em className="italic">touch!</em>
+          </h2>
+          <p
+            className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed"
+            style={{ fontFamily: "Inter, sans-serif" }}
+          >
+            If you're interested in working with me, please fill out the form
+            below and I'll get back to you as soon as possible.
+          </p>
         </div>
-        <div className="formpart flex-2 h-full w-full">
-          <form className="flex flex-col gap-6 h-[90vh] rounded-2xl bg-[#FFF9ED] w-full md:w-[80%] p-8 h-full font-lato">
-            {/* First Name & Last Name */}
-            <div className="grid grid-cols-2 gap-6">
-              <div className="flex flex-col">
-                <label className="text-sm font-bold text-gray-800 mb-2">
-                  First name <span className="text-rust">*</span>
+
+        <div className="grid lg:grid-cols-2 gap-20 items-start">
+          {/* Contact Form */}
+          <div className="bg-white p-10">
+            <div ref={formRef} className="space-y-6">
+              {/* Name Fields */}
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <label
+                    className="block text-sm font-medium text-[#000000] mb-3"
+                    style={{ fontFamily: "Inter, sans-serif" }}
+                  >
+                    First Name *
+                  </label>
+                  <div className="relative">
+                    <input
+                      type="text"
+                      name="firstName"
+                      value={formData.firstName}
+                      onChange={handleInputChange}
+                      onBlur={handleBlur}
+                      className={getInputClassName("firstName")}
+                      style={{ fontFamily: "Inter, sans-serif" }}
+                      placeholder="First Name"
+                      data-testid="input-first-name"
+                    />
+                    {touched.firstName && !errors.firstName && formData.firstName && (
+                      <svg className="w-5 h-5 text-[#6b8d71] absolute right-3 top-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      </svg>
+                    )}
+                  </div>
+                  {touched.firstName && errors.firstName && (
+                    <p className="mt-1.5 text-sm text-red-300" style={{ fontFamily: "Inter, sans-serif" }}>
+                      {errors.firstName}
+                    </p>
+                  )}
+                </div>
+                <div>
+                  <label
+                    className="block text-sm font-medium text-[#000000] mb-3"
+                    style={{ fontFamily: "Inter, sans-serif" }}
+                  >
+                    Last Name *
+                  </label>
+                  <div className="relative">
+                    <input
+                      type="text"
+                      name="lastName"
+                      value={formData.lastName}
+                      onChange={handleInputChange}
+                      onBlur={handleBlur}
+                      className={getInputClassName("lastName")}
+                      style={{ fontFamily: "Inter, sans-serif" }}
+                      placeholder="Last Name"
+                      data-testid="input-last-name"
+                    />
+                    {touched.lastName && !errors.lastName && formData.lastName && (
+                      <svg className="w-5 h-5 text-[#6b8d71] absolute right-3 top-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      </svg>
+                    )}
+                  </div>
+                  {touched.lastName && errors.lastName && (
+                    <p className="mt-1.5 text-sm text-red-300" style={{ fontFamily: "Inter, sans-serif" }}>
+                      {errors.lastName}
+                    </p>
+                  )}
+                </div>
+              </div>
+
+              {/* Email */}
+              <div>
+                <label
+                  className="block text-sm font-medium text-[#000000] mb-3"
+                  style={{ fontFamily: "Inter, sans-serif" }}
+                >
+                  Email *
                 </label>
+                <div className="relative">
+                  <input
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    onBlur={handleBlur}
+                    className={getInputClassName("email")}
+                    style={{ fontFamily: "Inter, sans-serif" }}
+                    placeholder="your@email.com"
+                    data-testid="input-email"
+                  />
+                  {touched.email && !errors.email && formData.email && (
+                    <svg className="w-5 h-5 text-[#6b8d71] absolute right-3 top-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                  )}
+                </div>
+                {touched.email && errors.email && (
+                  <p className="mt-1.5 text-sm text-red-300" style={{ fontFamily: "Inter, sans-serif" }}>
+                    {errors.email}
+                  </p>
+                )}
+              </div>
+
+              {/* Company/Business & SM Handles */}
+              <div>
+                <label
+                  className="block text-sm font-medium text-[#000000] mb-3"
+                  style={{ fontFamily: "Inter, sans-serif" }}
+                >
+                  Company/Business & SM Handles *
+                </label>
+                <div className="relative">
+                  <input
+                    type="text"
+                    name="companyBusiness"
+                    value={formData.companyBusiness}
+                    onChange={handleInputChange}
+                    onBlur={handleBlur}
+                    className={getInputClassName("companyBusiness")}
+                    style={{ fontFamily: "Inter, sans-serif" }}
+                    placeholder="Your company name or social media handles"
+                    data-testid="input-company-business"
+                  />
+                  {touched.companyBusiness && !errors.companyBusiness && formData.companyBusiness && (
+                    <svg className="w-5 h-5 text-[#6b8d71] absolute right-3 top-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                  )}
+                </div>
+                {touched.companyBusiness && errors.companyBusiness && (
+                  <p className="mt-1.5 text-sm text-red-300" style={{ fontFamily: "Inter, sans-serif" }}>
+                    {errors.companyBusiness}
+                  </p>
+                )}
+              </div>
+
+              {/* Services Checkboxes */}
+              <div onBlur={handleServicesBlur}>
+                <label
+                  className="block text-sm font-medium text-[#000000] mb-3"
+                  style={{ fontFamily: "Inter, sans-serif" }}
+                >
+                  What services are you interested in? *
+                </label>
+                <div className="space-y-3">
+                  <div className="flex items-start gap-3">
+                    <input
+                      type="checkbox"
+                      id="service-administrative"
+                      checked={formData.services.includes("Administrative Support")}
+                      onChange={() => handleServiceChange("Administrative Support")}
+                      className="w-5 h-5  bg-white rounded-md
+                               focus:ring-terracotta focus:ring-2 mt-0.5"
+                      data-testid="checkbox-service-administrative"
+                    />
+                    <label
+                      htmlFor="service-administrative"
+                      className="text-sm text-gray-600 leading-relaxed"
+                      style={{ fontFamily: "Inter, sans-serif" }}
+                    >
+                      Administrative Support
+                    </label>
+                  </div>
+
+                  <div className="flex items-start gap-3">
+                    <input
+                      type="checkbox"
+                      id="service-operations"
+                      checked={formData.services.includes("Operations Support")}
+                      onChange={() => handleServiceChange("Operations Support")}
+                      className="w-5 h-5  bg-white rounded-md
+                               focus:ring-terracotta focus:ring-2 mt-0.5"
+                      data-testid="checkbox-service-operations"
+                    />
+                    <label
+                      htmlFor="service-operations"
+                      className="text-sm text-gray-600 leading-relaxed"
+                      style={{ fontFamily: "Inter, sans-serif" }}
+                    >
+                      Operations Support
+                    </label>
+                  </div>
+
+                  <div className="flex items-start gap-3">
+                    <input
+                      type="checkbox"
+                      id="service-event"
+                      checked={formData.services.includes("Event Support")}
+                      onChange={() => handleServiceChange("Event Support")}
+                      className="w-5 h-5 bg-white rounded-md
+                               focus:ring-terracotta focus:ring-2 mt-0.5"
+                      data-testid="checkbox-service-event"
+                    />
+                    <label
+                      htmlFor="service-event"
+                      className="text-sm text-gray-600 leading-relaxed"
+                      style={{ fontFamily: "Inter, sans-serif" }}
+                    >
+                      Event Support
+                    </label>
+                  </div>
+                </div>
+                {touched.services && errors.services && (
+                  <p className="mt-1.5 text-sm text-red-300" style={{ fontFamily: "Inter, sans-serif" }}>
+                    {errors.services}
+                  </p>
+                )}
+              </div>
+
+              {/* Message */}
+              <div>
+                <div className="flex justify-between items-center mb-3">
+                  <label
+                    className="block text-sm font-medium text-[#000000]"
+                    style={{ fontFamily: "Inter, sans-serif" }}
+                  >
+                    Tell me a little about your business and how we can support you! *
+                  </label>
+                  <span className="text-xs text-gray-400" style={{ fontFamily: "Inter, sans-serif" }}>
+                    {formData.message.length}/500
+                  </span>
+                </div>
+                <div className="relative">
+                  <textarea
+                    name="message"
+                    value={formData.message}
+                    onChange={handleInputChange}
+                    onBlur={handleBlur}
+                    maxLength={500}
+                    rows="5"
+                    className={getInputClassName("message") + " resize-none"}
+                    style={{ fontFamily: "Inter, sans-serif" }}
+                    placeholder="Tell me about your project or how I can help..."
+                    data-testid="textarea-message"
+                  ></textarea>
+                </div>
+                {touched.message && errors.message && (
+                  <p className="mt-1.5 text-sm text-red-300" style={{ fontFamily: "Inter, sans-serif" }}>
+                    {errors.message}
+                  </p>
+                )}
+              </div>
+
+              {/* Newsletter Checkbox */}
+              <div className="flex items-start gap-3 pt-2">
                 <input
-                  type="text"
-                  required
-                  className="border-b-2 border-gray-600 bg-transparent focus:outline-none focus:border-rust transition-colors py-2 text-gray-800"
+                  type="checkbox"
+                  id="newsletter"
+                  name="newsletter"
+                  checked={formData.newsletter}
+                  onChange={handleInputChange}
+                  className="w-5 h-5 bg-white rounded-md
+                           focus:ring-terracotta focus:ring-2 mt-0.5"
+                  data-testid="checkbox-newsletter"
                 />
-              </div>
-              <div className="flex flex-col">
-                <label className="text-sm font-bold text-gray-800 mb-2">
-                  Last name <span className="text-rust">*</span>
-                </label>
-                <input
-                  type="text"
-                  required
-                  className="border-b-2 border-gray-600 bg-transparent focus:outline-none focus:border-rust transition-colors py-2 text-gray-800"
-                />
-              </div>
-            </div>
-
-            {/* Email */}
-            <div className="flex flex-col">
-              <label className="text-sm font-bold text-gray-800 mb-2">
-                Email <span className="text-rust">*</span>
-              </label>
-              <input
-                type="email"
-                required
-                className="border-b-2 border-gray-600 bg-transparent focus:outline-none focus:border-rust transition-colors py-2 text-gray-800"
-              />
-            </div>
-
-            {/* Company/Business */}
-            <div className="flex flex-col">
-              <label className="text-sm font-bold text-gray-800 mb-2">
-                Company/Business & SM Handles{" "}
-                <span className="text-rust">*</span>
-              </label>
-              <input
-                type="text"
-                required
-                className="border-b-2 border-gray-600 bg-transparent focus:outline-none focus:border-rust transition-colors py-2 text-gray-800"
-              />
-            </div>
-
-            {/* Services Interested */}
-            <div className="flex flex-col">
-              <label className="text-sm font-bold text-gray-800 mb-3">
-                What services are you interested in?{" "}
-                <span className="text-rust">*</span>
-              </label>
-              <div className="space-y-3">
-                <label className="flex items-center gap-3 cursor-pointer">
-                  <input type="checkbox" className="w-4 h-4 accent-rust" />
-                  <span className="text-gray-800">Administrative Support</span>
-                </label>
-                <label className="flex items-center gap-3 cursor-pointer">
-                  <input type="checkbox" className="w-4 h-4 accent-rust" />
-                  <span className="text-gray-800">Operations Support</span>
-                </label>
-                <label className="flex items-center gap-3 cursor-pointer">
-                  <input type="checkbox" className="w-4 h-4 accent-rust" />
-                  <span className="text-gray-800">Event Support</span>
+                <label
+                  htmlFor="newsletter"
+                  className="text-sm text-gray-600 leading-relaxed"
+                  style={{ fontFamily: "Inter, sans-serif" }}
+                >
+                  Yes, I'd like to receive helpful tips and updates via email
                 </label>
               </div>
+
+              {/* Submit Status */}
+              {submitStatus === "success" && (
+                <div
+                  className="p-4 bg-terracotta border border-[#6b8d71] rounded-2xl text-[#6b8d71] flex items-center gap-2"
+                  style={{ fontFamily: "Inter, sans-serif" }}
+                >
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  Thank you for your message! I'll get back to you within 24 hours.
+                </div>
+              )}
+
+              {submitStatus === "error" && (
+                <div
+                  className="p-4 bg-red-50 border border-red-200 rounded-2xl text-red-500"
+                  style={{ fontFamily: "Inter, sans-serif" }}
+                >
+                  There was an error sending your message. Please try again or email me directly.
+                </div>
+              )}
+
+              <button
+                onClick={handleSubmit}
+                disabled={isSubmitting || !isFormValid()}
+                className="w-full bg-terracotta text-white px-8 py-4 rounded-3xl font-medium
+                          transition-all duration-300 
+                         disabled:opacity-50 disabled:cursor-not-allowed
+                         inline-flex items-center justify-center gap-2
+                         hover:shadow-lg cursor-pointer"
+                style={{ fontFamily: "Inter, sans-serif" }}
+                data-testid="button-submit"
+              >
+                {isSubmitting ? (
+                  <>
+                    <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                    Sending your message...
+                  </>
+                ) : (
+                  <>
+                    <svg
+                      className="w-5 h-5"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={1.5}
+                        d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                      />
+                    </svg>
+                    Send Message
+                  </>
+                )}
+              </button>
+            </div>
+          </div>
+
+          {/* Contact Info Section */}
+          <div className="space-y-12 lg:pt-8 px-8 lg:px-1">
+            <div>
+              <h3
+                className="text-3xl font-light text-[#000000] mb-6"
+                style={{ fontFamily: "Playfair Display, serif" }}
+              >
+                Let's work together
+              </h3>
+              <p
+                className="text-lg text-gray-600 leading-relaxed"
+                style={{ fontFamily: "Inter, sans-serif" }}
+              >
+                I'm here to help streamline your business operations so you can
+                focus on what you do best. Whether you need ongoing support or a
+                one-time project, I'd love to hear about your needs.
+              </p>
             </div>
 
-            {/* Message */}
-            <div className="flex flex-col flex-1">
-              <label className="text-sm font-bold text-gray-800 mb-2">
-                Tell me a little about your business and how we can support you!{" "}
-                <span className="text-rust">*</span>
-              </label>
-              <textarea
-                required
-                rows="4"
-                className="border-b-2 border-gray-600 bg-transparent focus:outline-none focus:border-rust transition-colors py-2 text-gray-800 resize-none"
+            <div className="space-y-6">
+              <div className="flex items-start gap-4 group">
+                <div className="w-12 h-12 bg-cream-beige rounded-full flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                  <svg
+                    className="w-6 h-6 text-rust"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={1.5}
+                      d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
+                  </svg>
+                </div>
+                <div>
+                  <p
+                    className="font-medium text-[#000000] mb-1"
+                    style={{ fontFamily: "Inter, sans-serif" }}
+                  >
+                    Quick Response
+                  </p>
+                  <p
+                    className="text-gray-600 leading-relaxed"
+                    style={{ fontFamily: "Inter, sans-serif" }}
+                  >
+                    I'll respond within 24 hours
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-4 group">
+                <div className="w-12 h-12 bg-cream-beige rounded-full flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                  <svg
+                    className="w-6 h-6 text-rust"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={1.5}
+                      d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
+                  </svg>
+                </div>
+                <div>
+                  <p
+                    className="font-medium text-[#000000] mb-1"
+                    style={{ fontFamily: "Inter, sans-serif" }}
+                  >
+                    Free Consultation
+                  </p>
+                  <p
+                    className="text-gray-600 leading-relaxed"
+                    style={{ fontFamily: "Inter, sans-serif" }}
+                  >
+                    30-minute discovery call included
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Professional workspace image */}
+            <div className="rounded-3xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
+              <img
+                src="https://images.unsplash.com/photo-1752224543110-35faed040b91?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=464"
+                alt="Professional workspace with modern aesthetic"
+                className="w-full h-[20rem] object-cover"
+                data-testid="img-contact"
               />
             </div>
-
-            {/* Submit Button */}
-            <button
-              type="submit"
-              className="bg-rust text-white py-3 px-8 cursor-pointer font-bold uppercase text-sm tracking-wider hover:shadow-2xl transition-colors duration-300 self-start mt-4"
-            >
-              Send Message
-            </button>
-          </form>
+          </div>
         </div>
       </div>
-    </div>
+    </section>
   );
-};
-
-export default Contact;
+}

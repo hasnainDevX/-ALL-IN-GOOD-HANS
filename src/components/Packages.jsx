@@ -2,7 +2,9 @@ import React from "react";
 import { Link } from "react-scroll";
 import coffee from "../assets/coffee.png";
 import flower from "../assets/flower.png";
+import grid from "../assets/grid.png";
 import bulbline from "../assets/bulbline.png";
+import theticborder from "../assets/theticborder.png";
 
 const Packages = () => {
   const projects = [
@@ -41,12 +43,12 @@ const Packages = () => {
     <div id="packages" name="packages" className="py-20 px-5 relative">
       <img
         className=" absolute w-20 h-20 md:w-32 md:h-32 left-[5%] top-[0%] -rotate-12 z-1"
-        src={coffee}
+        src={grid}
         alt="coffee Image"
       />
       <img
         className=" absolute w-20 h-20 md:w-32 md:h-32 right-[5%] top-[0%]  -rotate-12 z-1"
-        src={flower}
+        src={theticborder}
         alt="flower Image"
       />
       <div className="max-w-6xl mx-auto ">

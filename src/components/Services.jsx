@@ -6,6 +6,8 @@ import { Link } from "react-scroll";
 import flower from "../assets/flower.png";
 import coffee from "../assets/coffee.png";
 import grid from "../assets/theticborder.png";
+import element1 from "../assets/element1.png";
+import element2 from "../assets/element2.png";
 
 const Services = () => {
   const services = [
@@ -66,19 +68,23 @@ const Services = () => {
   ];
 
   return (
-    <section name="services" id="services" className="relative bg-terracotta py-24 px-6 md:py-32 lg:py-40 overflow-hidden">
+    <section
+      name="services"
+      id="services"
+      className="relative bg-terracotta py-24 px-6 md:py-32 lg:py-40 overflow-hidden"
+    >
       {/* Decorative Elements */}
-       <img
-        className=" absolute w-20 h-20 md:w-32 md:h-32 left-[5%] md:top-[5%] top-[1%] -rotate-12 z-1"
-        src={coffee}
+      {/* <img
+        className=" absolute w-20 h-20 md:w-40 md:h-40 left-[5%] md:top-[5%] top-[1%] z-1"
+        src={element1}
         alt="coffee Image"
-      />
+      /> */}
       <img
-        className=" absolute w-20 h-20 md:w-32 md:h-32 right-[5%] md:top-[5%] top-[1%] -rotate-12 z-1"
-        src={flower}
-        alt="flower Image"
+        className=" absolute w-20 h-20 md:w-96 md:h-96 right-[5%] md:-right-28 md:top-0 top-[1%] -rotate-12 z-1"
+        src={element2}
+        alt="leaves Image"
       />
-      <div className="absolute top-20 right-10 opacity-10">
+      <div className="absolute top-20 left-10 opacity-10">
         <Sparkles className="w-32 h-32 text-white" />
       </div>
       <div className="absolute bottom-20 left-10 opacity-10">
@@ -192,22 +198,22 @@ const Services = () => {
           </React.Fragment>
         ))}
         <Link to="pricing" smooth={true} duration={500} offset={-70}>
-        <button className="group bg-white text-terracotta shadow-lg px-6 sm:px-8 py-3.5 sm:py-4 rounded-full text-xs font-bold uppercase tracking-[0.15em] transition-all duration-300 hover:bg-white/90 hover:shadow-xl cursor-pointer block mx-auto mt-24 font-lato">
-          Take me to Pricing
-          <svg
-            className="w-4 h-4 ml-2 inline-block group-hover:translate-x-1 transition-transform duration-300"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M9 5l7 7-7 7"
-            />
-          </svg>
-        </button>
+          <button className="group bg-white text-terracotta shadow-lg px-6 sm:px-8 py-3.5 sm:py-4 rounded-full text-xs font-bold uppercase tracking-[0.15em] transition-all duration-300 hover:bg-white/90 hover:shadow-xl cursor-pointer block mx-auto mt-24 font-lato">
+            Take me to Pricing
+            <svg
+              className="w-4 h-4 ml-2 inline-block group-hover:translate-x-1 transition-transform duration-300"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M9 5l7 7-7 7"
+              />
+            </svg>
+          </button>
         </Link>
       </div>
     </section>
