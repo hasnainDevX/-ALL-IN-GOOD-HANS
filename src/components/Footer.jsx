@@ -17,7 +17,7 @@ const Footer = () => {
   ];
 
   const instagramImages = [image1, image2, image3];
-  const privacyImage = achievementImage; // Replace with actual path later
+  const achievement = achievementImage; // Replace with actual path later
   const allImages = [...instagramImages,achievementImage ];
 
   const openImage = (index) => {
@@ -154,7 +154,7 @@ const Footer = () => {
               </div>
             </div>
           </div>
-        </div>a
+        </div>
         <hr className="text-gray-400 my-3" />
         <p className="text-gray-600 text-sm text-center">
           All in Good Hans © 2025 | All Rights Reserved
