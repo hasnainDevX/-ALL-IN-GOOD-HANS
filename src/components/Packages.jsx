@@ -6,6 +6,7 @@ import flower from "../assets/flower.png";
 import grid from "../assets/grid.png";
 import bulbline from "../assets/bulbline.png";
 import theticborder from "../assets/theticborder.png";
+import hearts from "../assets/hearts.png";
 
 const Packages = () => {
   const elementsRef = useRef([]);
@@ -76,7 +77,7 @@ const Packages = () => {
       {/* Floating decorative images */}
       <img
         className="absolute w-20 h-20 md:w-32 md:h-32 left-[5%] top-[0%] -rotate-12 z-1"
-        src={grid}
+        src={hearts}
         alt="grid decoration"
         style={{
           animation: "float 6s ease-in-out infinite",

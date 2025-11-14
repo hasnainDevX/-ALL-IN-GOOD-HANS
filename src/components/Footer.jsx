@@ -3,6 +3,7 @@ import { Instagram, Facebook, Mail, X, ChevronLeft, ChevronRight } from "lucide-
 import image1 from "../assets/image1.jpg";
 import image2 from "../assets/image2.jpg";
 import image3 from "../assets/image3.jpg";
+import achievementImage from "../assets/certificate.png";
 
 const Footer = () => {
   const [selectedImage, setSelectedImage] = useState(null);
@@ -16,8 +17,8 @@ const Footer = () => {
   ];
 
   const instagramImages = [image1, image2, image3];
-  const privacyImage = image1; // Replace with actual path later
-  const allImages = [...instagramImages, privacyImage];
+  const privacyImage = achievementImage; // Replace with actual path later
+  const allImages = [...instagramImages,achievementImage ];
 
   const openImage = (index) => {
     setCurrentIndex(index);
@@ -93,16 +94,16 @@ const Footer = () => {
               <p className="text-gray-700 text-sm">
                 ICO reference: ZC007202
               </p>
-              {/* <div 
+              <div 
                 className="mt-4 overflow-hidden rounded-lg cursor-pointer hover:opacity-80 transition-opacity"
                 onClick={() => openImage(3)}
               >
                 <img
-                  src={privacyImage}
+                  src={achievementImage}
                   alt="Privacy policy reference"
-                  className="w-[40%] mx-a"
+                  className="w-[40%] "
                 />
-              </div> */}
+              </div>
             </div>
 
             {/* Instagram Column */}
@@ -153,7 +154,7 @@ const Footer = () => {
               </div>
             </div>
           </div>
-        </div>
+        </div>a
         <hr className="text-gray-400 my-3" />
         <p className="text-gray-600 text-sm text-center">
           All in Good Hans © 2025 | All Rights Reserved
