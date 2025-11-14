@@ -1,8 +1,10 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import emailjs from "emailjs-com";
 
 export default function ContactForm() {
   const formRef = useRef();
+  const elementsRef = useRef([]);
+  
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -17,6 +19,34 @@ export default function ContactForm() {
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const delay = entry.target.dataset.delay || 0;
+            setTimeout(() => {
+              entry.target.style.opacity = "1";
+              entry.target.style.transform = "translateY(0)";
+            }, delay);
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    elementsRef.current.forEach((ref) => {
+      if (ref) {
+        ref.style.opacity = "0";
+        ref.style.transform = "translateY(20px)";
+        ref.style.transition = "opacity 600ms ease-out, transform 600ms ease-out";
+        observer.observe(ref);
+      }
+    });
+
+    return () => observer.disconnect();
+  }, []);
 
   const validateName = (value) => {
     if (!value.trim()) return "This field is required";
@@ -206,16 +236,20 @@ export default function ContactForm() {
   };
 
   return (
-    <section id="contact" className="py-24 bg-white ge" data-testid="section-contact">
+    <section id="contact" className="py-24 bg-white" data-testid="section-contact">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2
-            className="text-5xl md:text-6xl font-light text-rust mb-6"
+            ref={(el) => (elementsRef.current[0] = el)}
+            data-delay="0"
+            className="text-5xl sm:text-6xl lg:text-7xl font-bold text-rust mb-6"
             style={{ fontFamily: "Playfair Display, serif" }}
           >
             Get in <em className="italic">touch!</em>
           </h2>
           <p
+            ref={(el) => (elementsRef.current[1] = el)}
+            data-delay="150"
             className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed"
             style={{ fontFamily: "Inter, sans-serif" }}
           >
@@ -226,7 +260,11 @@ export default function ContactForm() {
 
         <div className="grid lg:grid-cols-2 gap-20 items-start">
           {/* Contact Form */}
-          <div className="bg-white p-10">
+          <div
+            ref={(el) => (elementsRef.current[2] = el)}
+            data-delay="200"
+            className="bg-white p-10"
+          >
             <div ref={formRef} className="space-y-6">
               {/* Name Fields */}
               <div className="grid grid-cols-2 gap-4">
@@ -497,7 +535,7 @@ export default function ContactForm() {
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
-                  Thank you for your message! I'll get back to you within 24 hours.
+                  Thank you for your message! I'll get back to you as soon as possible.
                 </div>
               )}
 
@@ -549,7 +587,11 @@ export default function ContactForm() {
           </div>
 
           {/* Contact Info Section */}
-          <div className="space-y-12 lg:pt-8 px-8 lg:px-1">
+          <div
+            ref={(el) => (elementsRef.current[3] = el)}
+            data-delay="350"
+            className="space-y-12 lg:pt-8 px-8 lg:px-1"
+          >
             <div>
               <h3
                 className="text-3xl font-light text-[#000000] mb-6"

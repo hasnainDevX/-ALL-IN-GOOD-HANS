@@ -1,8 +1,13 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { Check } from 'lucide-react';
 import { Link } from "react-scroll";
 
 const WhyChooseVa = () => {
+  const headingRef = useRef(null);
+  const benefitRefs = useRef([]);
+  const buttonRef = useRef(null);
+  const imageRef = useRef(null);
+
   const benefits = [
     {
       title: "Get Your Time and Headspace Back",
@@ -21,12 +26,89 @@ const WhyChooseVa = () => {
     },
   ];
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            // Heading
+            if (headingRef.current) {
+              setTimeout(() => {
+                headingRef.current.style.opacity = "1";
+                headingRef.current.style.transform = "translateY(0)";
+              }, 0);
+            }
+
+            // Benefits staggered
+            benefitRefs.current.forEach((benefit, idx) => {
+              if (benefit) {
+                setTimeout(() => {
+                  benefit.style.opacity = "1";
+                  benefit.style.transform = "translateY(0)";
+                }, 200 + idx * 150);
+              }
+            });
+
+            // Button
+            if (buttonRef.current) {
+              setTimeout(() => {
+                buttonRef.current.style.opacity = "1";
+                buttonRef.current.style.transform = "translateY(0)";
+              }, 650);
+            }
+
+            // Image
+            if (imageRef.current) {
+              setTimeout(() => {
+                imageRef.current.style.opacity = "1";
+              }, 100);
+            }
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    // Set initial states
+    if (headingRef.current) {
+      headingRef.current.style.opacity = "0";
+      headingRef.current.style.transform = "translateY(30px)";
+      headingRef.current.style.transition = "opacity 700ms ease-out, transform 700ms ease-out";
+    }
+
+    benefitRefs.current.forEach((benefit) => {
+      if (benefit) {
+        benefit.style.opacity = "0";
+        benefit.style.transform = "translateY(25px)";
+        benefit.style.transition = "opacity 600ms ease-out, transform 600ms ease-out";
+      }
+    });
+
+    if (buttonRef.current) {
+      buttonRef.current.style.opacity = "0";
+      buttonRef.current.style.transform = "translateY(20px)";
+      buttonRef.current.style.transition = "opacity 600ms ease-out, transform 600ms ease-out";
+    }
+
+    if (imageRef.current) {
+      imageRef.current.style.opacity = "0";
+      imageRef.current.style.transition = "opacity 800ms ease-out";
+    }
+
+    // Observe the section
+    const section = document.getElementById("whychooseva");
+    if (section) observer.observe(section);
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <section className="grid lg:grid-cols-2 min-h-[500px] lg:min-h-[600px]" id="whychooseva">
       {/* Left - Text Content */}
       <div className="flex items-center justify-center px-8 py-16 lg:px-16 lg:py-28">
         <div className="max-w-xl">
           <h2
+            ref={headingRef}
             className="text-5xl sm:text-6xl lg:text-7xl text-rust leading-tight mb-12 font-semibold"
             style={{ fontFamily: "'Playfair Display', serif" }}
           >
@@ -36,7 +118,11 @@ const WhyChooseVa = () => {
           {/* Benefits List */}
           <div className="space-y-8">
             {benefits.map((benefit, index) => (
-              <div key={index} className="flex gap-4 lg:gap-6">
+              <div
+                key={index}
+                ref={(el) => (benefitRefs.current[index] = el)}
+                className="flex gap-4 lg:gap-6"
+              >
                 <div className="flex-shrink-0 pt-1">
                   <Check className="w-10 h-10 lg:w-12 lg:h-12 text-[#6B9BD1]" />
                 </div>
@@ -53,33 +139,36 @@ const WhyChooseVa = () => {
                 </div>
               </div>
             ))}
-            <Link to="services" smooth={true} duration={500} offset={-70}>
-            <button
-              className="group bg-rust text-white px-4 sm:px-6 py-3.5 sm:py-3.5  rounded-full text-xs uppercase tracking-[0.15em] hover:bg-[#ac5135] transition-all duration-300  hover:shadow-xl border border-rust/20 2xl:px-16 2xl:py-8 2xl:text-2xl cursor-pointer mt-6"
-              style={{ fontFamily: '"Inter", sans-serif' }}
-            >
-              Explore my Services
-              <svg
-                className="w-4 h-4 ml-2 inline-block group-hover:translate-x-1 transition-transform duration-300"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M9 5l7 7-7 7"
-                />
-              </svg>
-            </button>
-            </Link>
+            <div ref={buttonRef}>
+              <Link to="services" smooth={true} duration={500} offset={-70}>
+                <button
+                  className="group bg-rust text-white px-4 sm:px-6 py-3.5 sm:py-3.5 rounded-full text-xs uppercase tracking-[0.15em] hover:bg-[#ac5135] transition-all duration-300 hover:shadow-xl border border-rust/20 2xl:px-16 2xl:py-8 2xl:text-2xl cursor-pointer mt-6"
+                  style={{ fontFamily: '"Inter", sans-serif' }}
+                >
+                  Explore my Services
+                  <svg
+                    className="w-4 h-4 ml-2 inline-block group-hover:translate-x-1 transition-transform duration-300"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M9 5l7 7-7 7"
+                    />
+                  </svg>
+                </button>
+              </Link>
+            </div>
           </div>
         </div>
       </div>
 
       {/* Right - Image */}
       <div
+        ref={imageRef}
         className="bg-center bg-cover min-h-[400px] lg:min-h-full"
         style={{
           backgroundImage:

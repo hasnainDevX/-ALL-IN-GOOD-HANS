@@ -1,7 +1,7 @@
 import React from 'react';
 
 export default function ModernMarquee() {
-  const marqueeTexts = ['ALL', 'IN', 'GOOD', 'HANS'];
+  const marqueeTexts = ['ALL', 'IN', 'GOOD', 'HANS', 'Virtual', 'Assistant'];
 
   return (
     <section className="py-20 pb-12 overflow-hidden relative text-deep-brown">
