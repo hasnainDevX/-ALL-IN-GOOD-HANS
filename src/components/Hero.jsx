@@ -45,27 +45,27 @@ const Hero = () => {
 
       {/* Coffee - Floating Animation */}
       <img
-        className="absolute w-20 h-20 md:w-32 md:h-32 left-[8%] top-[5%] -rotate-12 z-1 animate-float"
+        className="absolute w-20 h-20 md:w-32 md:h-32 md:left-[8%] md:top-[5%] top-[10%] -rotate-12 z-1 animate-float"
         src={coffee}
         alt="coffee Image"
       />
 
       {/* Flower - Floating Animation */}
       <img
-        className="absolute w-20 h-20 md:w-32 md:h-32 right-[8%] top-[5%] -rotate-12 z-1 animate-float-delayed"
+        className="absolute w-20 h-20 md:w-32 md:h-32 right-[8%] md:top-[5%] top-[10%] -rotate-12 z-1 animate-float-delayed"
         src={flower}
         alt="flower Image"
       />
 
       {/* Grid images - No animation */}
       <img
-        className="absolute w-20 h-20 md:w-32 md:h-32 right-[8%] top-[5%] -rotate-12 z-0 animate-float-delayed"
+        className="absolute w-20 h-20 md:w-32 md:h-32 md:right-[8%] md:top-[5%] top-[10%] -rotate-12 z-0 animate-float-delayed"
         src={grid}
         alt="grid Image"
       />
 
       <img
-        className="absolute w-20 h-20 md:w-32 md:h-32 left-[8%] top-[5%] -rotate-12 z-0 animate-float"
+        className="absolute w-20 h-20 md:w-32 md:h-32 md:left-[8%] md:top-[5%] top-[10%] -rotate-12 z-0 animate-float"
         src={grid}
         alt="grid Image"
       />
@@ -139,7 +139,7 @@ const Hero = () => {
           className="text-5xl sm:text-6xl md:text-7xl text-center font-dancing my-3 text-terracotta relative transition-all duration-700"
         >
           <img
-            className="md:w-44 md:h-52 w-32 h-36 absolute -top-11 md:-top-16 md:left-24 left-20"
+            className="md:w-44 md:h-52 w-32 h-36 absolute -top-11 md:-top-16 md:left-20 left-16"
             src={ring}
             alt="ring"
           />
