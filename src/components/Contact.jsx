@@ -193,10 +193,10 @@ export default function ContactForm() {
 
     try {
       const response = await emailjs.send(
-        'service_mjhhdtrx',
-        'template_lojbw1f5',
+        'service_8endfmq',
+        'template_9rmb9sh',
         emailData,
-        'XyTsXZK_7GkXjkeOck'
+        'tuediucx9IlJwaGRK'
       );
 
       if (response.status === 200) {
@@ -529,7 +529,7 @@ export default function ContactForm() {
               {/* Submit Status */}
               {submitStatus === "success" && (
                 <div
-                  className="p-4 bg-terracotta border border-[#6b8d71] rounded-2xl text-[#6b8d71] flex items-center gap-2"
+                  className="p-4 bg-cream-beige border border-terracotta rounded-2xl text-green-500 flex items-center gap-2"
                   style={{ fontFamily: "Inter, sans-serif" }}
                 >
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

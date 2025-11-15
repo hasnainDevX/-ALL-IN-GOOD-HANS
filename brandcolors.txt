@@ -22,12 +22,4 @@ Accents: #D8966F (Terracotta)
 Hover/Interactive: #D1A693 (Soft Peach)
 CTAs: #BF5B3C (Rust) with #955749 (Deep Brown) on hover
 
-// Accessibility Notes
-- Deep Brown (#955749) on Cream Beige (#ECDAC8) = Good contrast for body text
-- Rust (#BF5B3C) on Cream Beige = Strong contrast for headings
-- Ensure CTA buttons have sufficient contrast
-
-// Complementary Neutrals (if needed)
-Off-White: #FAF8F6 (for pure white alternatives)
-Warm Gray: #8B7D77 (for muted text)
-Dark Charcoal: #3A3331 (for high contrast text if needed)
+service_8endfmq
