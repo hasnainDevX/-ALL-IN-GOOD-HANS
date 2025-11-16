@@ -529,7 +529,7 @@ export default function ContactForm() {
               {/* Submit Status */}
               {submitStatus === "success" && (
                 <div
-                  className="p-4 bg-cream-beige border border-terracotta rounded-2xl text-green-500 flex items-center gap-2"
+                  className="p-4 bg-cream-beige/40 border border-terracotta rounded-2xl text-rust flex items-center gap-2"
                   style={{ fontFamily: "Inter, sans-serif" }}
                 >
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
