@@ -132,7 +132,7 @@ const Navbar = () => {
               </div>
               <button
                 onClick={() => scrollToSection("contact")}
-                className="group bg-rust text-cream-beige px-6 py-3 rounded-full font-semibold text-xs uppercase tracking-wider hover:bg-deep-brown transition-all duration-300 shadow-lg hover:shadow-xl"
+                className="group bg-rust text-cream-beige px-6 py-3 rounded-full font-semibold text-xs uppercase tracking-wider hover:bg-rust/90 cursor-pointer transition-all duration-300 shadow-lg hover:shadow-xl"
               >
                 Contact Me
                 <svg
@@ -178,7 +178,7 @@ const Navbar = () => {
       {isMobileMenuOpen && (
         <div
           ref={overlayRef}
-          className="fixed inset-0 bg-deep-brown/40 backdrop-blur-sm z-[45] md:hidden"
+          className="fixed inset-0 bg-cream-beige/20 backdrop-blur-sm z-[45] md:hidden"
           onClick={closeMobileMenu}
         />
       )}
@@ -186,7 +186,7 @@ const Navbar = () => {
       {/* Mobile Menu Sidebar */}
       <div
         ref={mobileMenuRef}
-        className="fixed top-0 right-0 h-full w-[280px] bg-cream-beige shadow-2xl z-[55] md:hidden"
+        className="fixed top-0 right-0 h-full w-[280px] bg-[#fffefd] shadow-2xl z-[55] md:hidden"
         style={{ transform: "translateX(100%)" }}
       >
         {/* Close Button */}
@@ -236,12 +236,12 @@ const Navbar = () => {
             >
               Packages
             </button>
-            <button
+            {/* <button
               onClick={() => scrollToSection("contact")}
               className="block w-full text-left py-4 text-deep-brown hover:text-rust hover:translate-x-2 transition-all duration-300 font-medium tracking-wider text-sm uppercase border-b border-terracotta/20 cursor-pointer"
             >
               Contact
-            </button>
+            </button> */}
           </div>
 
           <div className="mt-8">
@@ -250,10 +250,26 @@ const Navbar = () => {
                 scrollToSection("contact");
                 closeMobileMenu();
               }}
-              className="block w-full text-center bg-rust text-cream-beige py-3 px-6 rounded-full hover:bg-deep-brown transition-all duration-300 font-semibold text-sm uppercase tracking-wider"
+              className="block w-full text-center bg-rust text-cream-beige py-3 px-6 rounded-full hover:bg-rust/90 cursor-pointer transition-all duration-300 font-semibold text-sm uppercase tracking-wider"
             >
               Contact Me
             </button>
+          </div>
+          <div className="icons flex-1 flex justify-center gap-8 items-end ">
+            <div className="icons flex gap-5 justify-center items-center">
+              <Instagram
+                className="text-rust cursor-pointer hover:text-deep-brown transition-colors duration-300 hover:scale-110 transform"
+                size={25}
+              />
+              <Linkedin
+                className="text-rust cursor-pointer hover:text-deep-brown transition-colors duration-300 hover:scale-110 transform"
+                size={25}
+              />
+              <Mail
+                className="text-rust cursor-pointer hover:text-deep-brown transition-colors duration-300 hover:scale-110 transform"
+                size={25}
+              />
+            </div>
           </div>
         </div>
       </div>
