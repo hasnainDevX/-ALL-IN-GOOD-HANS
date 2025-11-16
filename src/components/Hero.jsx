@@ -139,7 +139,7 @@ const Hero = () => {
           className="text-5xl sm:text-6xl md:text-7xl text-center font-dancing my-3 text-terracotta relative transition-all duration-700"
         >
           <img
-            className="md:w-44 md:h-52 w-32 h-36 absolute -top-11 md:-top-16 md:left-24 left-20"
+            className="md:w-44 md:h-52 w-32 h-36 absolute -top-11 md:-top-16 md:left-20 left-16"
             src={ring}
             alt="ring"
           />
