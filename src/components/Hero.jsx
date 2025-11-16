@@ -3,7 +3,7 @@ import ring from "../assets/ring2.png";
 import coffee from "../assets/coffee.png";
 import flower from "../assets/flower.png";
 import grid from "../assets/grid.png";
-import bulbline from "../assets/bulbline.png";
+import cat from "../assets/cat4.png";
 import { Link } from "react-scroll";
 
 const Hero = () => {
@@ -71,9 +71,9 @@ const Hero = () => {
       />
 
       <img
-        className="hidden md:block absolute w-40 h-40 left-[8%] bottom-[15%] -rotate-12 z-0"
-        src={bulbline}
-        alt="Bulbline Image"
+        className="hidden md:block absolute w-40 h-40 left-[4%] bottom-[15%] z-0"
+        src={cat}
+        alt="cat Image"
       />
 
       <img
