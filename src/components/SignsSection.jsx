@@ -1,15 +1,53 @@
-import React from "react";
+import React , { useEffect, useRef } from "react";
 import { Link } from "react-scroll";
 import coffee from "../assets/coffee.png";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function SignsSection() {
+  const sectionRef = useRef(null);
+  const coffeeRef = useRef(null);
+  const contentRef = useRef(null);
+  const imagesRef = useRef([]);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      // Coffee image gentle rotation
+      gsap.to(coffeeRef.current, {
+        translateY: 10,
+        duration: 2,
+        ease: "power1.inOut",
+        yoyo: true,
+        repeat: -1,
+      });
+
+      // Content card fade up (contained within viewport)
+      gsap.from(contentRef.current, {
+        opacity: 0,
+        y: 30, // Small movement to avoid overflow
+        duration: 0.8,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: contentRef.current,
+          start: "top 80%",
+          once: true,
+        },
+      });
+    }, sectionRef);
+      return () => ctx.revert();
+  }, []);
+
   return (
     <section
       name="signs"
       id="signs"
       className="relative py-12 md:py-16 bg-terracotta/70"
+      ref={sectionRef}
     >
         <img
+        ref={coffeeRef}
         className=" absolute w-20 h-20 md:w-32 md:h-32 right-[3%] top-[2%] -rotate-12 z-1"
         src={coffee}
         alt="coffee Image"
@@ -23,16 +61,18 @@ export default function SignsSection() {
               src="https://plus.unsplash.com/premium_photo-1666299356682-e65e8854e769?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=870"
               alt=""
               className="w-full"
+              ref={imagesRef}
             />
             <img
               src="https://images.unsplash.com/photo-1505330622279-bf7d7fc918f4?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=870"
               alt=""
               className="w-full "
+              ref={imagesRef}
             />
           </div>
 
           {/* Right: Content Card - Overlapping */}
-          <div className="absolute relative left-5 right-5 md:right-0  md:-ml-32 lg:-ml-40 bg-white p-10 md:p-16 lg:p-20 max-w-2xl shadow-lg md:h-[70%] h-auto">
+          <div ref={contentRef} className="absolute relative left-5 right-5 md:right-0  md:-ml-32 lg:-ml-40 bg-white p-10 md:p-16 lg:p-20 max-w-2xl shadow-lg md:h-[70%] h-auto">
             <h2
               className="text-2xl md:text-5xl font-light text-amber-950 mb-2 transition-all duration-700"
               style={{ fontFamily: "Playfair Display, serif" }}
