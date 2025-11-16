@@ -71,7 +71,7 @@ const Navbar = () => {
       <div className="navbar-container w-full font-lato">
         <div className="flex w-full flex-col">
           {/* Top Headline */}
-          <div className="topheadline w-full text-center text-cream-beige bg-terracotta rounded-b-lg py-2">
+          <div className="topheadline w-full text-center text-cream-beige bg-terracotta rounded-b-lg py-1">
             <h3 className="text-sm md:text-base">
               Free 1:1 Consultation with a Virtual Assistant
             </h3>
