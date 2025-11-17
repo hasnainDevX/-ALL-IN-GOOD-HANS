@@ -64,7 +64,7 @@ const Navbar = () => {
     }
   };
 
-  const navItems = ["Welcome", "About", "Services", "Pricing"];
+  const navItems = ["Welcome", "About", "Services", "Pricing", "Packages"];
 
   return (
     <>
@@ -162,6 +162,7 @@ const Navbar = () => {
           >
             <div className="logo flex justify-center items-center p-2">
               <img className="w-16 h-16" src={logo} alt="logo" />
+              <p className="text-rust text-base font-playfair ml-3">All In Good Hans</p>
             </div>
 
             <button
