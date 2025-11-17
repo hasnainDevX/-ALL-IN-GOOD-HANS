@@ -42,29 +42,29 @@ const Pricing = () => {
       name: "Ad Hoc Support",
       hours: "£30 per hour",
       points: [
-        "Ideal for one-off tasks or testing our service",
+        "Testing how we work together to solve your problem",
         "Minimum 2 hours billed to the nearest 15 minutes",
-        "New clients receive a £60 upfront deposit option",
+        "New clients will be required to pay a £60 deposit.",
       ],
       cta: "Enquire",
     },
     {
-      name: "A Happy Medium",
-      hours: "10 hours per week",
+      name: "Ongoing Support",
+      hours: "Available in 5, 10, 15, or 20-hour monthly packages",
       points: [
-        "Our most popular package for regular support",
-        "Perfect for managing a high volume of tasks",
-        "Valuable extension to your business operations",
+        "Invoiced upfront each month",
+        "Unused hours cannot be carried over",
+        "Ideal for clients seeking consistent, reliable support with guaranteed availability",
       ],
       cta: "Enquire",
     },
     {
-      name: "The Life Changer",
-      hours: "20 hours per week",
+      name: "Project based support",
+      hours: "Price on enquiry",
       points: [
-        "Perfect package for those with busy schedules",
-        "Heavily involved support across your business",
-        "Gives you time to focus on what you do best",
+        "Designed for clearly defined, outcome-focused projects",
+        "Suitable for event planning, system setup, digital organisation, and more",
+        "Fixed project fee based on scope, timelines, and deliverables",
       ],
       cta: "Enquire",
     },
@@ -148,7 +148,7 @@ const Pricing = () => {
               </h3>
 
               {/* Hours */}
-              <p className="text-blue-400 italic font-semibold mb-6">
+              <p className="text-deep-brown italic font-semibold mb-6">
                 {pkg.hours}
               </p>
 

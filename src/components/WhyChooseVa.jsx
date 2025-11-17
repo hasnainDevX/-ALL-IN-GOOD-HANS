@@ -17,7 +17,7 @@ const WhyChooseVa = () => {
     {
       title: "Save Money Without Losing Quality",
       description:
-        "No National Insurance, no holiday pay, no office costs. You only pay for the time you actually need.",
+        "No National Insurance, no holiday pay and no office costs. Just reliable support without the overheads of hiring an employee",
     },
     {
       title: "Stay Flexible and Ready for Anything",
@@ -124,7 +124,7 @@ const WhyChooseVa = () => {
                 className="flex gap-4 lg:gap-6"
               >
                 <div className="flex-shrink-0 pt-1">
-                  <Check className="w-10 h-10 lg:w-12 lg:h-12 text-[#6B9BD1]" />
+                  <Check className="w-10 h-10 lg:w-12 lg:h-12 text-deep-brown" />
                 </div>
                 <div>
                   <h3

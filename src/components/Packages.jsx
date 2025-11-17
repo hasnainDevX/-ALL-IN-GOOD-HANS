@@ -41,14 +41,15 @@ const Packages = () => {
 
   const projects = [
     {
-      name: "Inbox and Calendar Reset",
-      subtitle: "Regain control of your inbox, schedule, and peace of mind.",
+      name: "Inbox and Calendar Management",
+      subtitle: "£450/month",
       points: [
-        "Dedicated inbox checks",
-        "Prioritising and organising emails",
-        "Tracking actions and follow ups",
-        "Scheduling and diary management",
-        "Optional CRM updates or data entry",
+        "Twice-daily inbox checks (Mon–Fri): inbox reviewed and cleared at strategic times to maintain control and responsiveness",
+        "Professional correspondence: simple holding messages and standard replies sent to ensure timely, consistent communication",
+        "Custom email organisation: tailored folders and priority categories for a streamlined, easy-to-manage inbox",
+        "Meeting coordination: client and internal meetings scheduled with all required details handled",
+        "Time considerations included: travel and preparation time incorporated into all scheduling",
+        "Weekly overview: concise report outlining the week ahead, key priorities, and any scheduling conflicts"
       ],
     },
     {
@@ -60,16 +61,16 @@ const Packages = () => {
         "Folder structure design and clear naming",
       ],
     },
-    {
-      name: "Operational Assets Setup",
-      subtitle:
-        "Bring consistency and professionalism to your business operations.",
-      points: [
-        "SOP creation and documentation",
-        "Onboarding guides and training templates",
-        "Organised, shareable document library",
-      ],
-    },
+    // {
+    //   name: "Operational Assets Setup",
+    //   subtitle:
+    //     "Bring consistency and professionalism to your business operations.",
+    //   points: [
+    //     "SOP creation and documentation",
+    //     "Onboarding guides and training templates",
+    //     "Organised, shareable document library",
+    //   ],
+    // },
   ];
 
   return (
@@ -122,7 +123,7 @@ const Packages = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {projects.map((project, index) => (
             <div
               key={index}

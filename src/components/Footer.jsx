@@ -74,7 +74,7 @@ const Footer = () => {
             {/* Privacy Policy Column */}
             <div className="space-y-4">
               <div className="text-deep-brown">
-                <div className="italic">Click below to see the Privacy Policy</div>
+                {/* <div className="italic">Click below to see the Privacy Policy</div> */}
                 <a
                   className="underline"
                   href="https://drive.google.com/file/d/1vNlJQP8s29n5Eba6rz0ShupGZZ1HLyva/view?usp=drivesdk"
@@ -88,9 +88,9 @@ const Footer = () => {
                 organisational systems to help them streamline and grow their
                 businesses.
               </p>
-              <p className="text-gray-700 text-sm">
+              {/* <p className="text-gray-700 text-sm">
                 ICO registered
-              </p>
+              </p> */}
               <p className="text-gray-700 text-sm">
                 ICO reference: ZC007202
               </p>

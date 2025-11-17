@@ -17,7 +17,7 @@ const Hero = () => {
       { ref: heading1Ref, delay: 100 },
       { ref: heading2Ref, delay: 300 },
       { ref: taglineRef, delay: 500 },
-      { ref: buttonRef, delay: 700 }
+      { ref: buttonRef, delay: 700 },
     ];
 
     elements.forEach(({ ref, delay }) => {
@@ -117,7 +117,7 @@ const Hero = () => {
 
       {/* Content */}
       <div className="relative z-10 flex flex-col items-center justify-center h-full text-white space-y-3 p-4 md:px-0">
-        <div 
+        <div
           ref={heading1Ref}
           className="heading flex justify-center items-center flex-col space-y-3 transition-all duration-700"
         >
@@ -126,24 +126,48 @@ const Hero = () => {
             list?{" "}
           </h1>
         </div>
-        
-        <h1 
+
+        <h1
           ref={heading2Ref}
           className="text-5xl sm:text-6xl md:text-7xl font-bold uppercase text-center transition-all duration-700"
         >
           All in Good Hans
         </h1>
 
-        <div 
+        <div
           ref={taglineRef}
-          className="text-5xl sm:text-6xl md:text-7xl text-center font-dancing my-3 text-terracotta relative transition-all duration-700"
+          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-center font-dancing text-terracotta transition-all duration-700"
         >
-          <img
-            className="md:w-44 md:h-52 w-32 h-36 absolute -top-11 md:-top-16 md:left-20 left-16"
-            src={ring}
-            alt="ring"
-          />
-          The&nbsp;<span>calm</span>&nbsp; behind your chaos.
+          <div className="flex flex-wrap items-center justify-center gap-x-2 sm:gap-x-3">
+            <span>The</span>
+
+            {/* Ring with "calm" - Using relative positioning */}
+            <span className="relative inline-flex items-center justify-center">
+              {/* Ring SVG - adjust viewBox and size as needed */}
+              <svg
+                className="w-28 h-12 sm:w-36 sm:h-16 md:w-40 md:h-20 lg:w-44 lg:h-24"
+                viewBox="0 0 120 60"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <ellipse
+                  cx="60"
+                  cy="40"
+                  rx="50"
+                  ry="19"
+                  stroke="#ECDAC8"
+                  strokeWidth="2"
+                  transform=")"
+                />
+              </svg>
+              {/* "calm" text - absolutely positioned relative to its parent */}
+              <span className="absolute inset-0 flex items-center justify-center font-bold">
+                calm
+              </span>
+            </span>
+
+            <span>behind your chaos.</span>
+          </div>
         </div>
 
         {/* CTA Button */}
@@ -181,7 +205,8 @@ const Hero = () => {
 
       <style jsx>{`
         @keyframes float {
-          0%, 100% {
+          0%,
+          100% {
             transform: translateY(0px) rotate(-12deg);
           }
           50% {
@@ -190,7 +215,8 @@ const Hero = () => {
         }
 
         @keyframes floatDelayed {
-          0%, 100% {
+          0%,
+          100% {
             transform: translateY(0px) rotate(-12deg);
           }
           50% {

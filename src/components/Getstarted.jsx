@@ -241,7 +241,7 @@ const GetStarted = () => {
             className="group bg-rust text-white px-6 sm:px-6 py-3.5 sm:py-3.5 rounded-full text-xs uppercase tracking-[0.15em] hover:bg-[#ac5135] transition-all duration-300 hover:shadow-xl border border-rust/20 2xl:px-16 2xl:py-8 2xl:text-2xl cursor-pointer w-full md:w-auto"
             style={{ fontFamily: '"Inter", sans-serif' }}
           >
-            Contact
+            Contact form
             <svg
               className="w-4 h-4 ml-2 inline-block group-hover:translate-x-1 transition-transform duration-300"
               fill="none"

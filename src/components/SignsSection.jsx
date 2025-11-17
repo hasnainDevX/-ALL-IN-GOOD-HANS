@@ -2,6 +2,7 @@ import React , { useEffect, useRef } from "react";
 import { Link } from "react-scroll";
 import coffee from "../assets/coffee.png";
 import { gsap } from "gsap";
+import { ArrowBigLeft, ArrowBigRight } from "lucide-react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -84,24 +85,29 @@ export default function SignsSection() {
                 className="text-sm md:text-xl leading-relaxed"
                 style={{ color: "#2C2C2C" }}
               >
+              <ArrowBigRight className=" text-rust inline-block mr-2"/>
+
                 You spend more time managing emails than working with clients
               </p>
               <p
                 className="text-sm md:text-lg leading-relaxed"
                 style={{ color: "#2C2C2C" }}
               >
+                <ArrowBigRight className=" text-rust inline-block mr-2"/>
                 Deadlines or opportunities keep slipping through
               </p>
               <p
                 className="text-sm md:text-lg leading-relaxed"
                 style={{ color: "#2C2C2C" }}
               >
+               <ArrowBigRight className=" text-rust inline-block mr-2"/>
                 You are working late to keep up with admin
               </p>
               <p
                 className="text-sm md:text-lg leading-relaxed"
                 style={{ color: "#2C2C2C" }}
               >
+                <ArrowBigRight className=" text-rust inline-block mr-2"/>
                 You want to grow but need more time and structure to make it
                 happen
               </p>
