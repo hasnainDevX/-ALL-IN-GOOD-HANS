@@ -82,7 +82,7 @@ const Navbar = () => {
             className={`sticky top-0 z-50 transition-all duration-500 ease-in-out hidden md:flex ${
               isScrolled
                 ? "bg-cream-beige/95 backdrop-blur-md shadow-lg"
-                : "bg-cream-beige"
+                : "bg-cream-beige/60"
             }`}
           >
             <div className="flex-1 flex justify-center items-center">
