@@ -117,18 +117,22 @@ const Navbar = () => {
 
             <div className="icons flex-1 flex justify-center gap-8 items-center">
               <div className="icons flex gap-5 justify-center items-center">
-                <Instagram
-                  className="text-rust cursor-pointer hover:text-deep-brown transition-colors duration-300 hover:scale-110 transform"
-                  size={25}
-                />
+                <a href="https://www.instagram.com/allingoodhans">
+                  <Instagram
+                    className="text-rust cursor-pointer hover:text-deep-brown transition-colors duration-300 hover:scale-110 transform"
+                    size={25}
+                  />
+                </a>
                 <Linkedin
                   className="text-rust cursor-pointer hover:text-deep-brown transition-colors duration-300 hover:scale-110 transform"
                   size={25}
                 />
-                <Mail
-                  className="text-rust cursor-pointer hover:text-deep-brown transition-colors duration-300 hover:scale-110 transform"
-                  size={25}
-                />
+                <a href="mailto:allingoodhans@gmail.com">
+                  <Mail
+                    className="text-rust cursor-pointer hover:text-deep-brown transition-colors duration-300 hover:scale-110 transform"
+                    size={25}
+                  />
+                </a>
               </div>
               <button
                 onClick={() => scrollToSection("contact")}
@@ -162,7 +166,9 @@ const Navbar = () => {
           >
             <div className="logo flex justify-center items-center p-2">
               <img className="w-16 h-16" src={logo} alt="logo" />
-              <p className="text-rust text-base font-playfair ml-3">All In Good Hans</p>
+              <p className="text-rust text-base font-playfair ml-3">
+                All In Good Hans
+              </p>
             </div>
 
             <button
