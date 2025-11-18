@@ -223,8 +223,7 @@ const GetStarted = () => {
             className="text-white text-base lg:text-xl text-center font-normal"
             style={{ fontFamily: "Inter, sans-serif" }}
           >
-            If we both agree it is a good fit, I will send your booking form and
-            contract. Once signed and your deposit is received, we can get
+            If we both agree it is a good fit, I will send your booking form. Once signed and your deposit is received, we can get
             started
           </p>
         </div>
