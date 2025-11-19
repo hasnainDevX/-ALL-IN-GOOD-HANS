@@ -13,6 +13,7 @@ import Getstarted from './components/Getstarted'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
 import NotFound from './components/NotFound'
+import ScrollToTop from './components/ScrollToTop' // Add this import
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
               <Getstarted/>
               <Contact />
               <Footer/>
+              <ScrollToTop /> {/* Add this component */}
             </>
           } 
         />

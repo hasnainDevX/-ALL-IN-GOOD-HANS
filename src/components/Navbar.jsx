@@ -117,17 +117,25 @@ const Navbar = () => {
 
             <div className="icons flex-1 flex justify-center gap-8 items-center">
               <div className="icons flex gap-5 justify-center items-center">
-                <a href="https://www.instagram.com/allingoodhans">
+                <a
+                  href="https://www.instagram.com/allingoodhans"
+                  target="_blank"
+                >
                   <Instagram
                     className="text-rust cursor-pointer hover:text-deep-brown transition-colors duration-300 hover:scale-110 transform"
                     size={25}
                   />
                 </a>
-                <Linkedin
-                  className="text-rust cursor-pointer hover:text-deep-brown transition-colors duration-300 hover:scale-110 transform"
-                  size={25}
-                />
-                <a href="mailto:allingoodhans@gmail.com">
+                <a
+                  href="https://www.linkedin.com/in/hannahsansome"
+                  target="_blank"
+                >
+                  <Linkedin
+                    className="text-rust cursor-pointer hover:text-deep-brown transition-colors duration-300 hover:scale-110 transform"
+                    size={25}
+                  />
+                </a>
+                <a href="mailto:allingoodhans@gmail.com" >
                   <Mail
                     className="text-rust cursor-pointer hover:text-deep-brown transition-colors duration-300 hover:scale-110 transform"
                     size={25}
@@ -264,18 +272,24 @@ const Navbar = () => {
           </div>
           <div className="icons flex-1 flex justify-center gap-8 items-end ">
             <div className="icons flex gap-5 justify-center items-center">
-              <Instagram
-                className="text-rust cursor-pointer hover:text-deep-brown transition-colors duration-300 hover:scale-110 transform"
-                size={25}
-              />
-              <Linkedin
-                className="text-rust cursor-pointer hover:text-deep-brown transition-colors duration-300 hover:scale-110 transform"
-                size={25}
-              />
-              <Mail
-                className="text-rust cursor-pointer hover:text-deep-brown transition-colors duration-300 hover:scale-110 transform"
-                size={25}
-              />
+              <a href="https://www.instagram.com/allingoodhans">
+                <Instagram
+                  className="text-rust cursor-pointer hover:text-deep-brown transition-colors duration-300 hover:scale-110 transform"
+                  size={25}
+                />
+              </a>
+              <a href="https://www.linkedin.com/in/hannahsansome">
+                <Linkedin
+                  className="text-rust cursor-pointer hover:text-deep-brown transition-colors duration-300 hover:scale-110 transform"
+                  size={25}
+                />
+              </a>
+              <a href="mailto:allingoodhans@gmail.com">
+                <Mail
+                  className="text-rust cursor-pointer hover:text-deep-brown transition-colors duration-300 hover:scale-110 transform"
+                  size={25}
+                />
+              </a>
             </div>
           </div>
         </div>
