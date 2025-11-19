@@ -1,9 +1,11 @@
 import React, { useState, useRef, useEffect } from "react";
 import emailjs from "emailjs-com";
+import ReCAPTCHA from "react-google-recaptcha";
 
 export default function ContactForm() {
   const formRef = useRef();
   const elementsRef = useRef([]);
+  const recaptchaRef = useRef(null);
   
   const [formData, setFormData] = useState({
     firstName: "",
@@ -19,6 +21,9 @@ export default function ContactForm() {
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
+  const [recaptchaToken, setRecaptchaToken] = useState(null);
+
+  const RECAPTCHA_SITE_KEY = "6LfZDhIsAAAAANVFa98vNR3sTDtikpyxPJ3Y5Lln";
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -153,6 +158,10 @@ export default function ContactForm() {
     }));
   };
 
+  const onRecaptchaChange = (token) => {
+    setRecaptchaToken(token);
+  };
+
   const isFormValid = () => {
     const requiredFields = ["firstName", "lastName", "email", "companyBusiness", "message", "services"];
     return requiredFields.every(field => {
@@ -164,6 +173,12 @@ export default function ContactForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     
+    // Validate reCAPTCHA
+    if (!recaptchaToken) {
+      setSubmitStatus("recaptcha");
+      return;
+    }
+
     const newErrors = {};
     Object.keys(formData).forEach(key => {
       if (key !== "newsletter") {
@@ -212,6 +227,8 @@ export default function ContactForm() {
         });
         setTouched({});
         setErrors({});
+        setRecaptchaToken(null);
+        recaptchaRef.current.reset();
       }
     } catch (error) {
       console.error("Error:", error);
@@ -526,6 +543,15 @@ export default function ContactForm() {
                 </label>
               </div>
 
+              {/* reCAPTCHA */}
+              <div className="flex justify-center py-2">
+                <ReCAPTCHA
+                  ref={recaptchaRef}
+                  sitekey={RECAPTCHA_SITE_KEY}
+                  onChange={onRecaptchaChange}
+                />
+              </div>
+
               {/* Submit Status */}
               {submitStatus === "success" && (
                 <div
@@ -548,9 +574,18 @@ export default function ContactForm() {
                 </div>
               )}
 
+              {submitStatus === "recaptcha" && (
+                <div
+                  className="p-4 bg-yellow-50 border border-yellow-200 rounded-2xl text-yellow-700"
+                  style={{ fontFamily: "Inter, sans-serif" }}
+                >
+                  Please complete the reCAPTCHA verification before submitting.
+                </div>
+              )}
+
               <button
                 onClick={handleSubmit}
-                disabled={isSubmitting || !isFormValid()}
+                disabled={isSubmitting || !isFormValid() || !recaptchaToken}
                 className="w-full bg-terracotta text-white px-8 py-4 rounded-3xl font-medium
                           transition-all duration-300 
                          disabled:opacity-50 disabled:cursor-not-allowed
