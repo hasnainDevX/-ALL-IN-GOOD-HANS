@@ -253,8 +253,8 @@ export default function ContactForm() {
   };
 
   return (
-    <section id="contact" className="py-24 bg-white" data-testid="section-contact">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="contact" className="py-24 overflow-x-hidden bg-white" data-testid="section-contact">
+      <div className="max-w-7xl mx-auto px-0 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2
             ref={(el) => (elementsRef.current[0] = el)}

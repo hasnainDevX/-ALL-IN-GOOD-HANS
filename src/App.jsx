@@ -34,7 +34,7 @@ function App() {
               <Getstarted/>
               <Contact />
               <Footer/>
-              <ScrollToTop /> {/* Add this component */}
+              <ScrollToTop />
             </>
           } 
         />
