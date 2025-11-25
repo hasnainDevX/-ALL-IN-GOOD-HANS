@@ -1,17 +1,37 @@
 import React from "react";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link } from "react-scroll";
-import coffee from "../assets/coffee.png";
-import flower from "../assets/flower.png";
-import grid from "../assets/grid.png";
+import hearts from "../assets/hearts.png";
 import bulbline from "../assets/bulbline.png";
 import theticborder from "../assets/theticborder.png";
-import hearts from "../assets/hearts.png";
+import { client } from "../SanityClient";
 
 const Packages = () => {
   const elementsRef = useRef([]);
+  const [content, setContent] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
 
+  // Fetch content from Sanity FIRST
   useEffect(() => {
+    client
+      .fetch('*[_type == "packagesSection"][0]')
+      .then((fetchedData) => {
+        if (fetchedData) {
+          setContent(fetchedData);
+        }
+      })
+      .catch((err) => {
+        console.error("Error fetching packages content:", err);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
+  }, []);
+
+  // Run animation ONLY after content is loaded
+  useEffect(() => {
+    if (isLoading) return;
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -38,33 +58,37 @@ const Packages = () => {
     });
 
     return () => observer.disconnect();
-  }, []);
+  }, [isLoading]);
 
-  const projects = [
-    {
-      name: "Inbox and Calendar Management",
-      subtitle: "£450/month",
-      points: [
-        "Twice-daily inbox checks (Mon–Fri): inbox reviewed and cleared at strategic times to maintain control and responsiveness",
-        "Professional correspondence: simple holding messages and standard replies sent to ensure timely, consistent communication",
-        "Custom email organisation: tailored folders and priority categories for a streamlined, easy-to-manage inbox",
-        "Meeting coordination: client and internal meetings scheduled with all required details handled",
-        "Time considerations included: travel and preparation time incorporated into all scheduling",
-        "Weekly overview: concise report outlining the week ahead, key priorities, and any scheduling conflicts",
-        "Optional Add-On - £100/month Task extraction into your project management system: actions identified in emails added to your PM tool with clear deadlines and assigned owners ",
-      ],
-    },
-    {
-      name: "Digital Declutter Starter",
-      subtitle:
-        "Create calm and clarity in your digital space. — £199 (fixed price)",
-      points: [
-        "Google Drive migration & organisation — streamline and structure your files for easy access",
-        "Archiving & deletion — remove outdated or redundant files to reduce clutter",
-        "Folder structure & naming system — consistent, intuitive, and scalable",
-      ],
-    },
-  ];
+  // Show loading state
+  if (isLoading) {
+    return (
+      <div
+        id="packages"
+        name="packages"
+        className="py-24 px-5 relative overflow-hidden"
+      >
+        <div className="flex items-center justify-center min-h-[400px]">
+          <p className="text-gray-600 text-lg">Loading packages...</p>
+        </div>
+      </div>
+    );
+  }
+
+  // Show error state if no data
+  if (!content || !content.packages || content.packages.length === 0) {
+    return (
+      <div
+        id="packages"
+        name="packages"
+        className="py-24 px-5 relative overflow-hidden"
+      >
+        <div className="flex items-center justify-center min-h-[400px]">
+          <p className="text-gray-600 text-lg">Reload the Page</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div
@@ -124,7 +148,7 @@ const Packages = () => {
 
         {/* Elegant single-column stacked layout */}
         <div className="flex flex-col gap-20">
-          {projects.map((project, index) => (
+          {content.packages.map((project, index) => (
             <div
               key={index}
               ref={(el) => (elementsRef.current[3 + index] = el)}

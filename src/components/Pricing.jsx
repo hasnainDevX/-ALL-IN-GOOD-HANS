@@ -1,15 +1,32 @@
-
-import React from "react";
-import { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import coffee from "../assets/coffee.png";
 import flower from "../assets/flower.png";
 import bulbline from "../assets/bulbline.png";
 import { Link } from "react-scroll";
+import { client } from "../SanityClient";
 
 const Pricing = () => {
   const elementsRef = useRef([]);
+  const [content, setContent] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
 
+  // Fetch content from Sanity
   useEffect(() => {
+    client
+      .fetch('*[_type == "pricingSection"][0]')
+      .then((data) => {
+        if (data) {
+          setContent(data);
+        }
+      })
+      .catch((err) => console.error("Error fetching pricing content:", err))
+      .finally(() => setIsLoading(false));
+  }, []);
+
+  // Run animations ONLY after content loads
+  useEffect(() => {
+    if (isLoading) return;
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -29,49 +46,55 @@ const Pricing = () => {
       if (ref) {
         ref.style.opacity = "0";
         ref.style.transform = "translateY(30px)";
-        ref.style.transition = "opacity 700ms ease-out, transform 700ms ease-out";
+        ref.style.transition =
+          "opacity 700ms ease-out, transform 700ms ease-out";
         observer.observe(ref);
       }
     });
 
-    return () => observer.disconnect();
-  }, []);
+    // Observe the section
+    const section = document.getElementById("pricing");
+    if (section) observer.observe(section);
 
-  const packages = [
-    {
-      name: "Ad Hoc Support",
-      hours: "£30 per hour",
-      points: [
-        "Testing how we work together to solve your problem",
-        "Minimum 2 hours billed to the nearest 15 minutes",
-        "New clients will be required to pay a £60 deposit.",
-      ],
-      cta: "Enquire",
-    },
-    {
-      name: "Ongoing Support",
-      hours: "Available in 5, 10, 15, or 20-hour monthly packages",
-      points: [
-        "Invoiced upfront each month",
-        "Unused hours cannot be carried over",
-        "Ideal for clients seeking consistent, reliable support with guaranteed availability",
-      ],
-      cta: "Enquire",
-    },
-    {
-      name: "Project based support",
-      hours: "Price on enquiry",
-      points: [
-        "Designed for clearly defined, outcome-focused projects",
-        "Suitable for event planning, system setup, digital organisation, and more",
-        "Fixed project fee based on scope, timelines, and deliverables",
-      ],
-      cta: "Enquire",
-    },
-  ];
+    return () => observer.disconnect();
+  }, [isLoading]);
+
+  // Show loading state
+  if (isLoading) {
+    return (
+      <section
+        id="pricing"
+        name="pricing"
+        className="py-28 lg:py-36 relative overflow-hidden"
+      >
+        <div className="flex items-center justify-center min-h-[400px]">
+          <p className="text-gray-600 text-lg">Loading pricing...</p>
+        </div>
+      </section>
+    );
+  }
+
+  // Show error state if no data
+  if (!content || !content.pricing || content.pricing.length === 0) {
+    return (
+      <section
+        id="pricing"
+        name="pricing"
+        className="py-28 lg:py-36 relative overflow-hidden"
+      >
+        <div className="flex items-center justify-center min-h-[400px]">
+          <p className="text-gray-600 text-lg">Reload the Page</p>
+        </div>
+      </section>
+    );
+  }
 
   return (
-    <section id="pricing" name="pricing" className="py-28 lg:py-36 relative overflow-hidden">
+    <section
+      id="pricing"
+      name="pricing"
+      className="py-28 lg:py-36 relative overflow-hidden"
+    >
       {/* Floating decorative images */}
       <img
         className="absolute w-20 h-20 md:w-32 md:h-32 left-[5%] md:top-[5%] top-[2%] -rotate-12 z-1"
@@ -105,14 +128,14 @@ const Pricing = () => {
           className="text-5xl sm:text-6xl lg:text-7xl text-rust leading-tight text-center font-semibold"
           style={{ fontFamily: "'Playfair Display', serif" }}
         >
-          Pricing
+          {content.title || "Pricing"}
         </h2>
         <p
           ref={(el) => (elementsRef.current[1] = el)}
           data-delay="150"
           className="text-gray-600 text-sm md:text-base max-w-2xl mx-auto leading-relaxed text-center"
         >
-          I offer a range of flexible packages to suit your needs.
+          {content.introText || ""}
         </p>
         <div ref={(el) => (elementsRef.current[2] = el)} data-delay="300">
           <img className="w-20 h-20 mx-auto" src={bulbline} alt="bulbline" />
@@ -130,7 +153,7 @@ const Pricing = () => {
         <div className="absolute inset-0 bg-black/20"></div>
 
         <div className="packages grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto relative z-10 px-5">
-          {packages.map((pkg, index) => (
+          {content.pricing.map((pkg, index) => (
             <div
               key={index}
               ref={(el) => (elementsRef.current[3 + index] = el)}
@@ -144,7 +167,7 @@ const Pricing = () => {
 
               {/* Title */}
               <h3 className="text-3xl font-bold text-gray-800 mb-2 font-dancing">
-                {pkg.name}
+                {pkg.name || pkg.pkgName}
               </h3>
 
               {/* Hours */}
@@ -154,7 +177,7 @@ const Pricing = () => {
 
               {/* Description Points */}
               <ul className="text-gray-700 mb-8 flex-grow space-y-2 text-left font-lato">
-                {pkg.points.map((point, i) => (
+                {(pkg.points || pkg.descriptionPoints || []).map((point, i) => (
                   <li key={i} className="flex gap-2">
                     <span className="text-rust font-bold">•</span>
                     <span>{point}</span>
@@ -165,7 +188,7 @@ const Pricing = () => {
               {/* Button */}
               <Link to="contact" smooth={true} duration={500} offset={-70}>
                 <button className="bg-coral-500 hover:bg-coral-600 font-bold py-2 px-8 rounded-full transition-colors bg-rust text-cream-beige hover:bg-[#ac5135] cursor-pointer">
-                  {pkg.cta}
+                  {pkg.cta || "Enquire Now"}
                 </button>
               </Link>
             </div>

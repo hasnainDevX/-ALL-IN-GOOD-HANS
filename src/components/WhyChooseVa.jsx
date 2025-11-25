@@ -1,6 +1,7 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Check } from 'lucide-react';
 import { Link } from "react-scroll";
+import { client } from "../SanityClient";
 
 const WhyChooseVa = () => {
   const headingRef = useRef(null);
@@ -8,25 +9,26 @@ const WhyChooseVa = () => {
   const buttonRef = useRef(null);
   const imageRef = useRef(null);
 
-  const benefits = [
-    {
-      title: "Get Your Time and Headspace Back",
-      description:
-        "Spend your time on strategy, clients, and growth while I manage the admin. You will have more space to breathe and plan ahead.",
-    },
-    {
-      title: "Save Money Without Losing Quality",
-      description:
-        "No National Insurance, no holiday pay and no office costs. Just reliable support without the overheads of hiring an employee",
-    },
-    {
-      title: "Stay Flexible and Ready for Anything",
-      description:
-        "Whether you need support for a week, a month, or a full project, I can adapt to your workload, your systems, and your way of working.",
-    },
-  ];
+  const [content, setContent] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
 
+  // Fetch content from Sanity
   useEffect(() => {
+    client
+      .fetch('*[_type == "whyChooseVa"][0]')
+      .then((data) => {
+        if (data) {
+          setContent(data);
+        }
+      })
+      .catch((err) => console.error("Error fetching WhyChooseVa content:", err))
+      .finally(() => setIsLoading(false));
+  }, []);
+
+  // Run animations ONLY after content loads
+  useEffect(() => {
+    if (isLoading) return;
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -100,7 +102,7 @@ const WhyChooseVa = () => {
     if (section) observer.observe(section);
 
     return () => observer.disconnect();
-  }, []);
+  }, [isLoading]);
 
   return (
     <section className="grid lg:grid-cols-2 min-h-[500px] lg:min-h-[600px]" id="whychooseva">
@@ -112,12 +114,12 @@ const WhyChooseVa = () => {
             className="text-5xl sm:text-6xl lg:text-7xl text-rust leading-tight mb-12 font-semibold"
             style={{ fontFamily: "'Playfair Display', serif" }}
           >
-            Why Hire a Virtual Assistant?
+            {content.heading}
           </h2>
 
           {/* Benefits List */}
           <div className="space-y-8">
-            {benefits.map((benefit, index) => (
+            {content.benefits?.map((benefit, index) => (
               <div
                 key={index}
                 ref={(el) => (benefitRefs.current[index] = el)}
@@ -171,8 +173,7 @@ const WhyChooseVa = () => {
         ref={imageRef}
         className="bg-center bg-cover min-h-[400px] lg:min-h-full"
         style={{
-          backgroundImage:
-            "url('https://plus.unsplash.com/premium_photo-1723662162058-cbe2746d22ce?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=387')",
+          backgroundImage: content.imageUrl ? `url('${content.imageUrl}')` : "url('https://plus.unsplash.com/premium_photo-1723662162058-cbe2746d22ce?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=387')",
         }}
       />
     </section>
