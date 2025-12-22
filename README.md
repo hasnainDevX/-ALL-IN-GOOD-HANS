@@ -1,39 +1,43 @@
-# ALL IN GOOD HANS
+# ALL-IN-GOOD-HANS
 
-> The calm behind your chaos - Professional Virtual Assistant Services
+Client website for a Virtual Assistant service with a custom content management dashboard.
 
-[![Live Site](https://img.shields.io/badge/Live-allingoodhans.co.uk-success)](https://allingoodhans.co.uk)
-[![Built with React](https://img.shields.io/badge/React-18-blue)](https://reactjs.org/)
+## Live Preview
 
-## 📋 About The Project
+all-in-good-hans.co.uk
 
-ALL IN GOOD HANS is a modern, elegant web platform designed for a professional Virtual Assistant service based in the UK. The website showcases services, packages, and provides seamless client communication channels.
+## Overview
 
-### Key Highlights
+This repository contains the source code for **ALL-IN-GOOD-HANS**, a professional business website built for a Virtual Assistant service. The project focuses on clean UI, responsive design, and maintainable frontend architecture.
 
-- 🎨 **Modern Design** - Clean, calming aesthetic that builds trust
-- 📱 **Fully Responsive** - Optimized for all devices and screen sizes
-- ⚡ **Fast Performance** - Built with Vite for lightning-fast load times
-- 🔒 **Secure** - Professional hosting with SSL certification
-- 🎯 **User-Focused** - Intuitive navigation and clear service presentation
+A headless CMS setup using **Sanity** is included, allowing the client to manage website content independently without developer assistance.
 
-## 🛠️ Tech Stack
+## Features
 
-**Frontend Framework:**
-- React 18.x - Component-based architecture
-- React Router - Seamless page navigation
+- Responsive business website
+- Clean and minimal user interface
+- Custom content management dashboard using Sanity
+- Component-based frontend structure
+- Optimized layout with no horizontal scrolling issues
+- Easy content updates for non-technical users
 
-**Styling:**
-- Tailwind CSS - Utility-first responsive design
-- Custom CSS - Unique brand styling
+## Tech Stack
 
-**Build & Deploy:**
-- Vite - Next-generation frontend tooling
-- Vercel - Production deployment platform
-- Custom Domain - Professional .co.uk domain
+- React (Vite)
+- Tailwind CSS
+- JavaScript (ES6+)
+- Sanity CMS
+- Vercel for deployment
 
-**Development Tools:**
-- ESLint - Code quality
-- Git - Version control
+## What This Project Demonstrates
 
-## 🚀 Project Structure
+- Experience working on real client projects
+- Integration of a headless CMS
+- Strong attention to UI and layout stability
+- Clean, maintainable, and scalable frontend code
+- Production deployment workflow
+
+## Notes
+This project reflects real-world client requirements, including layout fixes, content updates, and CMS integration after initial development
+
+This project reflects real-world client requirements, including layout fixes, content updates, and CMS integration after initial development.
